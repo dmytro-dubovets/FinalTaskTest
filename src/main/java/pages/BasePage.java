@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class BasePage {
@@ -71,6 +73,6 @@ public class BasePage {
     public void selectSort(WebElement element, String ascordesc) {
         Select sort = new Select(element);
         sort.selectByValue(ascordesc);
-
     }
+
 }

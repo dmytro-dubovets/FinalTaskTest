@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Testing BBC.com" verbose="1">
-    <test name="Task 1 - Article is correct">
+    <test name="Task 1 - Check the article">
         <classes>
-            <class name="tests.Task1"></class>
-        </classes>
-    </test>
-    <test name="Task 2 - check sub articles">
-        <classes>
-            <class name="tests.Task2"></class>
-        </classes>
-    </test>
-    <test name="Task 3 - check that search word is presented">
-        <classes>
-            <class name="tests.Task3"></class>
+            <class name="tests.CheckTheArticle"/>
         </classes>
     </test>
 </suite>
