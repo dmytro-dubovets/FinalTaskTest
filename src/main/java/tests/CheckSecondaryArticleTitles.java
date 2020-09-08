@@ -13,7 +13,8 @@ public class CheckSecondaryArticleTitles extends BaseTest {
 
     @Test(priority = 2)
     public void checkOtherArticle() {
-        getBasePage().clickThroughJS(getHomePage().getNews());
+        getBasePage().waitVisibilityOfElement(5, getHomePage().getNews());
+        getHomePage().clickOnNews();
         Assert.assertEquals(listOfExpectedArticleTitles, getNewsPage().stringArrayListOfActualSecondaryArticleTitles(), "The expected secondary article titles " + listOfExpectedArticleTitles + " are not equal to the actual secondary article titles " + getNewsPage().stringArrayListOfActualSecondaryArticleTitles() + "\n");
     }
 }
