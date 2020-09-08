@@ -10,14 +10,31 @@ import org.testng.annotations.BeforeTest;
 import pages.BasePage;
 import pages.HomePage;
 import pages.NewsPage;
+import pages.SearchPage;
 
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
 
-    private static final String URL = "https://www.bbc.com/";
     protected WebDriver driver;
+    protected String url = "https://www.bbc.com/";
+
+    public BasePage getBasePage() {
+        return new BasePage(driver);
+    }
+
+    public HomePage getHomePage() {
+        return new HomePage(driver);
+    }
+
+    public NewsPage getNewsPage() {
+        return new NewsPage(driver);
+    }
+
+    public SearchPage getSearchPage() {
+        return new SearchPage(driver);
+    }
 
     @BeforeSuite
     public void profileSetUp() {
@@ -47,28 +64,12 @@ public class BaseTest {
     public void testsSetUp() {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.get(URL);
+        driver.get(url);
     }
 
     @AfterTest
     public void tearDown() {
         driver.close();
-    }
-
-    public WebDriver getDriver() {
-        return driver;
-    }
-
-    public BasePage getBasePage() {
-        return new BasePage(getDriver());
-    }
-
-    public HomePage getHomePage() {
-        return new HomePage(getDriver());
-    }
-
-    public NewsPage getNewsPage() {
-        return new NewsPage(getDriver());
     }
 
 }

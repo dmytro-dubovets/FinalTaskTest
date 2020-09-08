@@ -5,21 +5,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HomePage extends BasePage{
-
-    public HomePage(WebDriver driver) {
-        super(driver);
-    }
-
+public class HomePage extends BasePage {
 
     @FindBy(xpath = "//div[@id='orb-nav-links']//a[contains(text(),'News')]")
     private WebElement news;
-
     @FindBy(xpath = "//input[@id='orb-search-q']")
     private WebElement searchButton;
 
-    public void typeSearchWordAndPressEnter(String searchWord) {
-        searchButton.sendKeys(searchWord + Keys.ENTER);
+    public HomePage(WebDriver driver) {
+        super(driver);
     }
 
     public WebElement getNews() {
@@ -32,5 +26,9 @@ public class HomePage extends BasePage{
 
     public void clickOnNews() {
         news.click();
+    }
+
+    public void typeSearchWordAndPressEnter(String searchWord) {
+        getSearchButton().sendKeys(searchWord + Keys.ENTER);
     }
 }

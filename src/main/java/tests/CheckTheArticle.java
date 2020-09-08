@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CheckTheArticle extends BaseTest {
-    private String actualArticle = "BBC News";
+    protected String actualArticle = "BBC News";
 
     @Test(priority = 1)
     public void checkTheArticle() {

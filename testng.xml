@@ -11,4 +11,9 @@
             <class name="tests.CheckSecondaryArticleTitles"/>
         </classes>
     </test>
+    <test name="Task 3 - Check the category link of the first headline article">
+        <classes>
+            <class name="tests.CheckTheCategoryLinkOfTheFirstHeadlineArticle"/>
+        </classes>
+    </test>
 </suite>
