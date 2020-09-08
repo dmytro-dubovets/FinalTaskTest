@@ -36,9 +36,14 @@ public class NewsPage extends BasePage {
         ArrayList<String> actualList = new ArrayList<>();
         for (WebElement tab : getActualListOfSecondaryArticleTitles()) {
             String tabOfList = tab.getText();
-            if (tabOfList.length() != 0) {
-                actualList.add(tabOfList);
+            try {
+                if (tabOfList.length() != 0) {
+                    actualList.add(tabOfList);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+
         }
         return actualList;
     }
