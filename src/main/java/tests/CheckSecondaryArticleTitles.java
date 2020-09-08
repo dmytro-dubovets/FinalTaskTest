@@ -8,13 +8,12 @@ import java.util.Arrays;
 import java.util.List;
 
 
-    public class CheckSecondaryArticleTitles extends BaseTest {
-        private final List<String> listOfExpectedArticleTitles = new ArrayList<>(Arrays.asList("Home", "US Election", "Coronavirus", "Video", "World", "UK", "Business", "Tech", "Science", "Stories", "Entertainment & Arts", "Health", "World News TV", "In Pictures"));
+public class CheckSecondaryArticleTitles extends BaseTest {
+    private final List<String> listOfExpectedArticleTitles = new ArrayList<>(Arrays.asList("Home", "US Election", "Coronavirus", "Video", "World", "UK", "Business", "Tech", "Science", "Stories", "Entertainment & Arts", "Health", "World News TV", "In Pictures"));
 
-        @Test(priority = 2)
-        public void checkOtherArticle() {
-            getBasePage().clickThroughJS(getHomePage().getNews());
-            Assert.assertEquals(listOfExpectedArticleTitles, getNewsPage().stringArrayListOfActualSecondaryArticleTitles(), "The expected secondary article titles " + listOfExpectedArticleTitles + " are not equal to the actual secondary article titles " + getNewsPage().stringArrayListOfActualSecondaryArticleTitles() + "\n");
-        }
+    @Test(priority = 2)
+    public void checkOtherArticle() {
+        getBasePage().clickThroughJS(getHomePage().getNews());
+        Assert.assertEquals(listOfExpectedArticleTitles, getNewsPage().stringArrayListOfActualSecondaryArticleTitles(), "The expected secondary article titles " + listOfExpectedArticleTitles + " are not equal to the actual secondary article titles " + getNewsPage().stringArrayListOfActualSecondaryArticleTitles() + "\n");
     }
-
+}

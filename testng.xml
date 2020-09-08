@@ -6,4 +6,9 @@
             <class name="tests.CheckTheArticle"/>
         </classes>
     </test>
+    <test name="Task 2 - Check the secondary article titles">
+        <classes>
+            <class name="tests.CheckSecondaryArticleTitles"/>
+        </classes>
+    </test>
 </suite>
