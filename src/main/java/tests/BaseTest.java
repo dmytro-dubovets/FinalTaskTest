@@ -3,26 +3,21 @@ package tests;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
-import pages.*;
+import pages.BasePage;
+import pages.HomePage;
+import pages.NewsPage;
 
-import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
 
-    protected WebDriver driver;
     private static final String URL = "https://www.bbc.com/";
-
-    private static Set<String> apply(WebDriver driver1) {
-        Set<String> items = driver1.getWindowHandles();
-        return items.size() == 2 ? items : null;
-    }
+    protected WebDriver driver;
 
     @BeforeSuite
     public void profileSetUp() {
@@ -74,14 +69,6 @@ public class BaseTest {
 
     public NewsPage getNewsPage() {
         return new NewsPage(getDriver());
-    }
-
-    public SearchPage getSearchPage() {
-        return new SearchPage(getDriver());
-    }
-
-    public SignInPage getSignInPage() {
-        return new SignInPage(getDriver());
     }
 
 }

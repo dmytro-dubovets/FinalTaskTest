@@ -10,8 +10,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class BasePage {
@@ -55,8 +53,8 @@ public class BasePage {
         js.executeScript("arguments[0].click()", element);
     }
 
-    public void scrollDown(WebElement element){
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    public void scrollDown(WebElement element) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
     public void actionsMoveElementTo(WebElement element) {
