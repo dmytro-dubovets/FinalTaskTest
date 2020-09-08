@@ -3,10 +3,7 @@ package tests;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 import pages.BasePage;
 import pages.HomePage;
 import pages.NewsPage;
@@ -42,6 +39,8 @@ public class BaseTest {
         driver = new ChromeDriver();
     }
 
+    @BeforeClass
+
     @BeforeMethod
     public void closeSignInWindow() {
         try {
@@ -67,9 +66,9 @@ public class BaseTest {
         driver.get(url);
     }
 
-    @AfterTest
+    @AfterSuite
     public void tearDown() {
-        driver.close();
+        driver.quit();
     }
 
 }

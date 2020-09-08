@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Testing BBC.com" verbose="1">
+<suite name="Testing BBC.com" parallel="classes">
     <test name="Task 1 - Check the article">
         <classes>
             <class name="tests.CheckTheArticle"/>
