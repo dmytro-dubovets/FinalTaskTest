@@ -9,11 +9,10 @@ public class CheckTheCategoryLinkOfTheFirstHeadlineArticle extends BaseTest {
 
     @Test(priority = 3)
     public void checkThatSearchWordIsPresentedInTheFirstArticle() {
-        getBasePage().waitVisibilityOfElement(5, getHomePage().getNews());
-        getHomePage().clickOnNews();
-        actualTab = getNewsPage().getExpectedTextOfTheCoronaVirusTab();
-        getHomePage().typeSearchWordAndPressEnter(actualTab);
-        expectedHeadlineFirstArticle = getSearchPage().getFirstListOfHeadlineOfSearchArticles();
+        homePage().clickOnNews();
+        actualTab = newsPage().getExpectedTextOfTheCoronaVirusTab();
+        homePage().typeSearchWordAndPressEnter(actualTab);
+        expectedHeadlineFirstArticle = searchPage().getFirstListOfHeadlineOfSearchArticles();
         Assert.assertTrue(expectedHeadlineFirstArticle.contains(actualTab), "The first headline article " + expectedHeadlineFirstArticle + " doesn't contain actual article " + actualTab + "\n");
     }
 }

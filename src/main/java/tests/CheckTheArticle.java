@@ -6,11 +6,10 @@ import org.testng.annotations.Test;
 public class CheckTheArticle extends BaseTest {
     protected String actualArticle = "BBC News";
 
-    @Test(priority = 1)
+    @Test
     public void checkTheArticle() {
-        getBasePage().waitVisibilityOfElement(5, getHomePage().getNews());
-        getHomePage().clickOnNews();
-        String expectedArticle = getNewsPage().getExpectedTextOfTheArticle();
+        homePage().clickOnNews();
+        String expectedArticle = newsPage().getExpectedTextOfTheArticle();
         Assert.assertEquals(expectedArticle, actualArticle, "The expected article " + expectedArticle + " is not equal to the actual article " + actualArticle + "\n");
     }
 }

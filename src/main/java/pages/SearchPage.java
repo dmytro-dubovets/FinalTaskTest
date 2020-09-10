@@ -7,7 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchPage extends BasePage {
+public class SearchPage extends AbstractPage {
+
 
     @FindBy(xpath = "//div[@class='css-l100ew-PromoContentSummary ett16tt10']/p/a")
     private List<WebElement> headlineOfSearchArticle;
