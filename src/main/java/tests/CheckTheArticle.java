@@ -2,14 +2,18 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.HomePage;
+import pages.NewsPage;
 
-public class CheckTheArticle extends BaseTest {
+public class CheckTheArticle extends CommonConditions {
     protected String actualArticle = "BBC News";
 
     @Test
     public void checkTheArticle() {
-        homePage().clickOnNews();
-        String expectedArticle = newsPage().getExpectedTextOfTheArticle();
+        HomePage homePage = new HomePage(driver);
+        homePage.waiAndClickOnNews();
+        String expectedArticle = new NewsPage(driver)
+                .getExpectedTextOfTheArticle();
         Assert.assertEquals(expectedArticle, actualArticle, "The expected article " + expectedArticle + " is not equal to the actual article " + actualArticle + "\n");
     }
 }

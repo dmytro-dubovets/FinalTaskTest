@@ -16,4 +16,9 @@
             <class name="tests.CheckTheCategoryLinkOfTheFirstHeadlineArticle"/>
         </classes>
     </test>
+    <test name="Task 4 - Verifies that user can submit a question in the form">
+        <classes>
+            <class name="tests.VerifiesThatUserCanSubmitAQuestionInTheForm"/>
+        </classes>
+    </test>
 </suite>
