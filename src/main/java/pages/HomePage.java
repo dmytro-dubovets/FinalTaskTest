@@ -21,7 +21,7 @@ public class HomePage extends AbstractPage {
     }
 
     public void waiAndClickOnNews() {
-        WebDriverWait wait = new WebDriverWait(driver, 40);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.elementToBeClickable(news)).click();
     }
 
