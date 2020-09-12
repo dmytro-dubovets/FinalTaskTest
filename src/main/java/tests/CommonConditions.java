@@ -5,10 +5,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 
 public class CommonConditions {
 
@@ -23,10 +25,11 @@ public class CommonConditions {
         driver = new ChromeDriver();
     }
 
-    /*@BeforeMethod
+    @BeforeMethod
     public void switchToDefaultContent() {
-        driver.switchTo().defaultContent();
-    }*/
+        String mainWindow = driver.getWindowHandle();
+        driver.switchTo().window(mainWindow);
+    }
 
     @AfterMethod
     public void writeTextMsgIfWindowIsDisplayed() {
