@@ -17,32 +17,12 @@ public class CommonConditions {
     protected WebDriver driver;
     protected String url = "https://www.bbc.com/";
 
-    protected By windowOff = By.xpath("//button[@class='sign_in-exit']");
-
     @BeforeSuite
     public void profileSetUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
     }
 
-    @BeforeMethod
-    public void switchToDefaultContent() {
-        String mainWindow = driver.getWindowHandle();
-        driver.switchTo().window(mainWindow);
-    }
-
-    @AfterMethod
-    public void writeTextMsgIfWindowIsDisplayed() {
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, 1);
-            WebElement button = wait.until(ExpectedConditions.presenceOfElementLocated(windowOff));
-            if (button.getAttribute("data-bbc-title").contains("dismiss")) {
-                button.click();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     @BeforeTest
     public void testsSetUp() {

@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,14 +16,32 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//input[@id='orb-search-q']")
     private WebElement searchButton;
 
+    @FindBy(xpath = "//button[@class='sign_in-exit']")
+    private WebElement buttonExit;
+
+    protected By windowOff = By.xpath("//button[@class='sign_in-exit']");
+
     public HomePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
     }
 
+    public void writeTextMsgIfWindowIsDisplayed() {
+        try {
+            /*WebDriverWait wait = new WebDriverWait(driver, 1);
+            WebElement button = wait.until(ExpectedConditions.presenceOfElementLocated(windowOff));*/
+            if (buttonExit.isDisplayed()) {
+                buttonExit.click();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void waiAndClickOnNews() {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.elementToBeClickable(news)).click();
+        writeTextMsgIfWindowIsDisplayed();
     }
 
     public void typeSearchWordAndPressEnter(String searchWord) {
