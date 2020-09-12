@@ -23,10 +23,10 @@ public class CommonConditions {
         driver = new ChromeDriver();
     }
 
-    @BeforeMethod
+    /*@BeforeMethod
     public void switchToDefaultContent() {
         driver.switchTo().defaultContent();
-    }
+    }*/
 
     @AfterMethod
     public void writeTextMsgIfWindowIsDisplayed() {
@@ -47,8 +47,8 @@ public class CommonConditions {
         driver.get(url);
     }
 
-    @AfterSuite
+    /*@AfterSuite
     public void tearDown() {
         driver.quit();
-    }
+    }*/
 }
