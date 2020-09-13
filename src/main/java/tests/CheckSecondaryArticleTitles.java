@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.NewsPage;
+import pages.SignInWindowPage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,7 +17,8 @@ public class CheckSecondaryArticleTitles extends CommonConditions {
     @Test
     public void checkSecondaryArticles() {
         HomePage homePage = new HomePage(driver);
-        homePage.waiAndClickOnNews();
+        SignInWindowPage signInWindowPage = new SignInWindowPage(driver)
+                .writeTextMsgIfWindowIsDisplayed(homePage.getNews());
         ArrayList<String> actualSecondaryArticleTitles = new NewsPage(driver)
                 .stringArrayListOfActualSecondaryArticleTitles();
         Assert.assertEquals(listOfExpectedArticleTitles, actualSecondaryArticleTitles, "The expected secondary article titles " + listOfExpectedArticleTitles + " are not equal to the actual secondary article titles " + actualSecondaryArticleTitles + "\n");

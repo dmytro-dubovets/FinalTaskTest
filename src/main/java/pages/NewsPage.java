@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +19,14 @@ public class NewsPage extends AbstractPage {
     private List<WebElement> actualListOfSecondaryArticleTitles;
 
 
+    public WebElement getCoronaVirusTab() {
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.elementToBeClickable(coronaVirusTab));
+        return coronaVirusTab;
+    }
+
     @FindBy(xpath = "//li[@class='gs-o-list-ui__item--flush gel-long-primer gs-u-display-block gs-u-float-left nw-c-nav__wide-menuitem-container']//span[contains(text(),'Coronavirus')]")
     private WebElement coronaVirusTab;
-
-
 
     public NewsPage(WebDriver driver) {
         super(driver);
