@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
@@ -33,6 +34,9 @@ public class CommonConditions {
     @BeforeSuite
     public void profileSetUp() {
         setDriver(Chrome);
+        EventFiringWebDriver eventFiringWebDriver = new EventFiringWebDriver(driver);
+        EventListener eventListener = new EventListener();
+        eventFiringWebDriver.register(eventListener);
     }
 
     @BeforeTest
