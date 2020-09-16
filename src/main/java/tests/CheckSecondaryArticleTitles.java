@@ -17,7 +17,7 @@ public class CheckSecondaryArticleTitles extends CommonConditions {
     @Test
     public void checkSecondaryArticles() {
         HomePage homePage = new HomePage(driver);
-        SignInWindowPage signInWindowPage = new SignInWindowPage(driver)
+        new SignInWindowPage(driver)
                 .writeTextMsgIfWindowIsDisplayed(homePage.getNews());
         ArrayList<String> actualSecondaryArticleTitles = new NewsPage(driver)
                 .stringArrayListOfActualSecondaryArticleTitles();

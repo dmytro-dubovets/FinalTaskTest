@@ -12,8 +12,8 @@ public class CheckTheArticle extends CommonConditions {
     @Test
     public void checkTheArticle() {
         HomePage homePage = new HomePage(driver);
-        SignInWindowPage signInWindowPage = new SignInWindowPage(driver);
-        signInWindowPage.writeTextMsgIfWindowIsDisplayed(homePage.getNews());
+        new SignInWindowPage(driver)
+            .writeTextMsgIfWindowIsDisplayed(homePage.getNews());
         String expectedArticle = new NewsPage(driver)
                 .getExpectedTextOfTheArticle();
         Assert.assertEquals(expectedArticle, actualArticle, "The expected article " + expectedArticle + " is not equal to the actual article " + actualArticle + "\n");

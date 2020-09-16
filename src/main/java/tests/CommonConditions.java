@@ -34,9 +34,9 @@ public class CommonConditions {
     @BeforeSuite
     public void profileSetUp() {
         setDriver(Chrome);
-        EventFiringWebDriver eventFiringWebDriver = new EventFiringWebDriver(driver);
+        /*EventFiringWebDriver eventFiringWebDriver = new EventFiringWebDriver(driver);
         EventListener eventListener = new EventListener();
-        eventFiringWebDriver.register(eventListener);
+        eventFiringWebDriver.register(eventListener);*/
     }
 
     @BeforeTest

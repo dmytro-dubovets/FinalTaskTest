@@ -14,8 +14,8 @@ public class CheckTheCategoryLinkOfTheFirstHeadlineArticle extends CommonConditi
     public void checkThatSearchWordIsPresentedInTheFirstArticle() {
         HomePage homePage = new HomePage(driver);
         NewsPage newsPage = new NewsPage(driver);
-        SignInWindowPage signInWindowPage = new SignInWindowPage(driver);
-        signInWindowPage.writeTextMsgIfWindowIsDisplayed(homePage.getNews());
+        new SignInWindowPage(driver)
+            .writeTextMsgIfWindowIsDisplayed(homePage.getNews());
         String actualTab = newsPage.getExpectedTextOfTheCoronaVirusTab();
         homePage.typeSearchWordAndPressEnter(actualTab);
         String expectedHeadlineFirstArticle = new SearchPage(driver)
