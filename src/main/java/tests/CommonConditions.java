@@ -6,7 +6,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
 
 import java.util.concurrent.TimeUnit;
 
@@ -16,6 +15,9 @@ public class CommonConditions {
     protected String url = "https://www.bbc.com/";
     protected String Chrome = "Chrome";
     protected String FireFox = "Firefox";
+
+    public CommonConditions() {
+    }
 
     public void setDriver(String browser) {
         switch (browser) {
