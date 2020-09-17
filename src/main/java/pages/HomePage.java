@@ -1,24 +1,17 @@
 package pages;
 
-import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage extends AbstractPage {
 
-    protected By newsBy = By.xpath("//div[@id='orb-nav-links']//a[contains(text(),'News')]");
-
     public WebElement getNews() {
         return news;
-    }
-
-    public WebElement getSearchButton() {
-        return searchButton;
     }
 
     @FindBy(xpath = "//div[@id='orb-nav-links']//a[contains(text(),'News')]")
@@ -31,10 +24,13 @@ public class HomePage extends AbstractPage {
         PageFactory.initElements(this.driver, this);
     }
 
+    public void waitForPageLoadComplete(long timeToWait) {
+        new WebDriverWait(driver, timeToWait).until(
+                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+    }
 
-    public void waiAndClickOnNews() {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.elementToBeClickable(news)).click();
+    public void clickOnNews() {
+        news.click();
     }
 
     public void typeSearchWordAndPressEnter(String searchWord) {

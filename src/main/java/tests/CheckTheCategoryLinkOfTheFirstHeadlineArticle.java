@@ -1,6 +1,5 @@
 package tests;
 
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -14,8 +13,9 @@ public class CheckTheCategoryLinkOfTheFirstHeadlineArticle extends CommonConditi
     public void checkThatSearchWordIsPresentedInTheFirstArticle() {
         HomePage homePage = new HomePage(driver);
         NewsPage newsPage = new NewsPage(driver);
-        new SignInWindowPage(driver)
-            .writeTextMsgIfWindowIsDisplayed(homePage.getNews());
+        SignInWindowPage signInWindowPage = new SignInWindowPage(driver);
+        homePage.clickOnNews();
+        signInWindowPage.waitAndClosePopUp();
         String actualTab = newsPage.getExpectedTextOfTheCoronaVirusTab();
         homePage.typeSearchWordAndPressEnter(actualTab);
         String expectedHeadlineFirstArticle = new SearchPage(driver)

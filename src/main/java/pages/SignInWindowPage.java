@@ -1,12 +1,14 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SignInWindowPage extends AbstractPage {
+    protected WebDriverWait wait;
 
     public SignInWindowPage(WebDriver driver) {
         super(driver);
@@ -16,24 +18,8 @@ public class SignInWindowPage extends AbstractPage {
     @FindBy(xpath = "//button[@class='sign_in-exit']")
     private WebElement closeButton;
 
-    protected By windowOff = By.xpath("//button[@class='sign_in-exit']");
-
-
-    public void closePopUp() {
-        closeButton.click();
-    }
-
-
-    public SignInWindowPage writeTextMsgIfWindowIsDisplayed(WebElement element) {
-        while (element.isDisplayed()) {
-            try {
-                element.click();
-                break;
-            } catch (Exception e) {
-                e.printStackTrace();
-                closePopUp();
-            }
-        }
-        return this;
+    public void waitAndClosePopUp() {
+        wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOf(closeButton)).click();
     }
 }

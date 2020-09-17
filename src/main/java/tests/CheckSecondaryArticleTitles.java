@@ -17,8 +17,9 @@ public class CheckSecondaryArticleTitles extends CommonConditions {
     @Test
     public void checkSecondaryArticles() {
         HomePage homePage = new HomePage(driver);
-        new SignInWindowPage(driver)
-                .writeTextMsgIfWindowIsDisplayed(homePage.getNews());
+        SignInWindowPage signInWindowPage = new SignInWindowPage(driver);
+        homePage.clickOnNews();
+        signInWindowPage.waitAndClosePopUp();
         ArrayList<String> actualSecondaryArticleTitles = new NewsPage(driver)
                 .stringArrayListOfActualSecondaryArticleTitles();
         Assert.assertEquals(listOfExpectedArticleTitles, actualSecondaryArticleTitles, "The expected secondary article titles " + listOfExpectedArticleTitles + " are not equal to the actual secondary article titles " + actualSecondaryArticleTitles + "\n");

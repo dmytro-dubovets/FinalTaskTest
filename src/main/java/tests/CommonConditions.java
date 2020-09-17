@@ -4,9 +4,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 
 import java.util.concurrent.TimeUnit;
@@ -31,23 +30,21 @@ public class CommonConditions {
         }
     }
 
-    @BeforeSuite
+    @BeforeClass
     public void profileSetUp() {
         setDriver(Chrome);
-        /*EventFiringWebDriver eventFiringWebDriver = new EventFiringWebDriver(driver);
-        EventListener eventListener = new EventListener();
-        eventFiringWebDriver.register(eventListener);*/
-    }
-
-    @BeforeTest
-    public void testsSetUp() {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.get(url);
     }
 
+    /*@BeforeTest
+    public void testsSetUp() {
 
-    @AfterSuite
+    }*/
+
+
+    @AfterClass
     public void tearDown() {
         driver.quit();
     }

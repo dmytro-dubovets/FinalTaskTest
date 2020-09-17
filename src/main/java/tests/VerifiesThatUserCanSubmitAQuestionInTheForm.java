@@ -1,7 +1,5 @@
 package tests;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
@@ -16,15 +14,17 @@ public class VerifiesThatUserCanSubmitAQuestionInTheForm extends CommonCondition
         CoronaVirusPage coronaVirusPage = new CoronaVirusPage(driver);
         CoronaVirusStoriesPage coronaVirusStoriesPage = new CoronaVirusStoriesPage(driver);
         HowToShareYourStoriesPage howToShareYourStoriesPage = new HowToShareYourStoriesPage(driver);
-        new SignInWindowPage(driver)
-                .writeTextMsgIfWindowIsDisplayed(homePage.getNews())
-                .writeTextMsgIfWindowIsDisplayed(newsPage.getCoronaVirusTab());
-                //.writeTextMsgIfWindowIsDisplayed(coronaVirusPage.getYourCoronaVirusStories());
-                //.writeTextMsgIfWindowIsDisplayed(coronaVirusStoriesPage.getHowToShareYourStories())
-                //.writeTextMsgIfWindowIsDisplayed(howToShareYourStoriesPage.getSubmitButton());
-        /*boolean errorMessages = howToShareYourStoriesPage.ifErrorsMessagesAreDisplayed();
+        SignInWindowPage signInWindowPage = new SignInWindowPage(driver);
+        homePage.clickOnNews();
+        signInWindowPage.waitAndClosePopUp();
+        newsPage.clickOnTheCoronaVirusTab();
+        coronaVirusPage.clickOnGetStories();
+        homePage.waitForPageLoadComplete(15);
+        coronaVirusStoriesPage.clickOnHowToShareYourStories();
+        howToShareYourStoriesPage.clickOnSubmitButton();
+        boolean errorMessages = howToShareYourStoriesPage.ifErrorsMessagesAreDisplayed();
         Assert.assertTrue(errorMessages, "The error messages like: " + howToShareYourStoriesPage.errorMessages() + " are not displayed");
         boolean title = homePage.ifTitleIsEquals(titleOfHowToShare);
-        Assert.assertTrue(title, "The actual title is not equal to the expected title " + titleOfHowToShare);*/
+        Assert.assertTrue(title, "The actual title is not equal to the expected title " + titleOfHowToShare);
     }
 }

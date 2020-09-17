@@ -32,14 +32,17 @@ public class NewsPage extends AbstractPage {
         super(driver);
         PageFactory.initElements(this.driver, this);
     }
+
     public NewsPage clickOnTheCoronaVirusTab() {
         coronaVirusTab.click();
         return this;
     }
+
     public String getExpectedTextOfTheCoronaVirusTab() {
         return coronaVirusTab.getText();
 
     }
+
     public List<WebElement> getActualListOfSecondaryArticleTitles() {
         return actualListOfSecondaryArticleTitles;
     }
