@@ -38,14 +38,8 @@ public class CommonConditions {
         driver.get(url);
     }
 
-    /*@BeforeTest
-    public void testsSetUp() {
-
-    }*/
-
-
     @AfterClass
     public void tearDown() {
-        driver.quit();
+        driver.close();
     }
 }

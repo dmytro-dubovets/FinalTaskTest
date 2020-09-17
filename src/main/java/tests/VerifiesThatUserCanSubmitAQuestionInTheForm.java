@@ -16,9 +16,8 @@ public class VerifiesThatUserCanSubmitAQuestionInTheForm extends CommonCondition
         CoronaVirusPage coronaVirusPage = new CoronaVirusPage(driver);
         CoronaVirusStoriesPage coronaVirusStoriesPage = new CoronaVirusStoriesPage(driver);
         HowToShareYourStoriesPage howToShareYourStoriesPage = new HowToShareYourStoriesPage(driver);
-        SignInWindowPage signInWindowPage = new SignInWindowPage(driver);
         homePage.clickOnNews();
-        signInWindowPage.waitAndClosePopUp();
+        newsPage.waitAndClosePopUp();
         newsPage.clickOnTheCoronaVirusTab();
         coronaVirusPage.clickOnGetStories();
         homePage.waitForPageLoadComplete(15);
@@ -37,9 +36,8 @@ public class VerifiesThatUserCanSubmitAQuestionInTheForm extends CommonCondition
         CoronaVirusPage coronaVirusPage = new CoronaVirusPage(driver);
         CoronaVirusStoriesPage coronaVirusStoriesPage = new CoronaVirusStoriesPage(driver);
         HowToShareYourStoriesPage howToShareYourStoriesPage = new HowToShareYourStoriesPage(driver);
-        SignInWindowPage signInWindowPage = new SignInWindowPage(driver);
         homePage.clickOnNews();
-        signInWindowPage.waitAndClosePopUp();
+        newsPage.waitAndClosePopUp();
         newsPage.clickOnTheCoronaVirusTab();
         coronaVirusPage.clickOnGetStories();
         homePage.waitForPageLoadComplete(15);
@@ -59,9 +57,8 @@ public class VerifiesThatUserCanSubmitAQuestionInTheForm extends CommonCondition
         CoronaVirusPage coronaVirusPage = new CoronaVirusPage(driver);
         CoronaVirusStoriesPage coronaVirusStoriesPage = new CoronaVirusStoriesPage(driver);
         HowToShareYourStoriesPage howToShareYourStoriesPage = new HowToShareYourStoriesPage(driver);
-        SignInWindowPage signInWindowPage = new SignInWindowPage(driver);
         homePage.clickOnNews();
-        signInWindowPage.waitAndClosePopUp();
+        newsPage.waitAndClosePopUp();
         newsPage.clickOnTheCoronaVirusTab();
         coronaVirusPage.clickOnGetStories();
         homePage.waitForPageLoadComplete(15);
@@ -82,9 +79,8 @@ public class VerifiesThatUserCanSubmitAQuestionInTheForm extends CommonCondition
         CoronaVirusPage coronaVirusPage = new CoronaVirusPage(driver);
         CoronaVirusStoriesPage coronaVirusStoriesPage = new CoronaVirusStoriesPage(driver);
         HowToShareYourStoriesPage howToShareYourStoriesPage = new HowToShareYourStoriesPage(driver);
-        SignInWindowPage signInWindowPage = new SignInWindowPage(driver);
         homePage.clickOnNews();
-        signInWindowPage.waitAndClosePopUp();
+        newsPage.waitAndClosePopUp();
         newsPage.clickOnTheCoronaVirusTab();
         coronaVirusPage.clickOnGetStories();
         homePage.waitForPageLoadComplete(15);

@@ -12,6 +12,7 @@ import java.util.List;
 
 
 public class NewsPage extends AbstractPage {
+    protected WebDriverWait wait;
 
     @FindBy(xpath = "//span[contains(text(),'BBC News')]")
     private WebElement expectedArticle;
@@ -31,6 +32,14 @@ public class NewsPage extends AbstractPage {
     public NewsPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
+    }
+
+    @FindBy(xpath = "//button[@class='sign_in-exit']")
+    private WebElement closeButton;
+
+    public void waitAndClosePopUp() {
+        wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOf(closeButton)).click();
     }
 
     public NewsPage clickOnTheCoronaVirusTab() {

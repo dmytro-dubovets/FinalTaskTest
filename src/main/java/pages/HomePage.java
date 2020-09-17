@@ -24,10 +24,6 @@ public class HomePage extends AbstractPage {
         PageFactory.initElements(this.driver, this);
     }
 
-    public void waitForPageLoadComplete(long timeToWait) {
-        new WebDriverWait(driver, timeToWait).until(
-                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
-    }
 
     public void clickOnNews() {
         news.click();

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Testing BBC.com" parallel="classes">
-    <test name="Task 1 - Check the article">
+<suite verbose="1" name="FinalTaskTest" thread-count="5" annotations="JDK" parallel="tests">
+    <test name="Task BBC1.Part1.1 - Check the article">
         <classes>
             <class name="tests.CheckTheArticle"/>
         </classes>
     </test>
-    <test name="Task 2 - Check the secondary article titles">
+    <test name="Task BBC1.Part1.2 - Check the secondary article titles">
         <classes>
             <class name="tests.CheckSecondaryArticleTitles"/>
         </classes>
     </test>
-    <test name="Task 3 - Check the category link of the first headline article">
+    <test name="Task BBC1.Part1.3 - Check the category link of the first headline article">
         <classes>
             <class name="tests.CheckTheCategoryLinkOfTheFirstHeadlineArticle"/>
         </classes>
     </test>
-    <test name="Task 4 - Verifies that user can submit a question in the form">
+    <test name="Task BBC1.Part2.1 - Verifies that user can submit a question in the form">
         <classes>
             <class name="tests.VerifiesThatUserCanSubmitAQuestionInTheForm"/>
         </classes>

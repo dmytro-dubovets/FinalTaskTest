@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.NewsPage;
 import pages.SearchPage;
-import pages.SignInWindowPage;
 
 public class CheckTheCategoryLinkOfTheFirstHeadlineArticle extends CommonConditions {
 
@@ -13,9 +12,8 @@ public class CheckTheCategoryLinkOfTheFirstHeadlineArticle extends CommonConditi
     public void checkThatSearchWordIsPresentedInTheFirstArticle() {
         HomePage homePage = new HomePage(driver);
         NewsPage newsPage = new NewsPage(driver);
-        SignInWindowPage signInWindowPage = new SignInWindowPage(driver);
         homePage.clickOnNews();
-        signInWindowPage.waitAndClosePopUp();
+        newsPage.waitAndClosePopUp();
         String actualTab = newsPage.getExpectedTextOfTheCoronaVirusTab();
         homePage.typeSearchWordAndPressEnter(actualTab);
         String expectedHeadlineFirstArticle = new SearchPage(driver)
