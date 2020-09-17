@@ -5,40 +5,40 @@ import org.testng.annotations.Test;
 import pages.*;
 
 public class VerifiesThatTeamScoresDisplayCorrectly extends CommonConditions{
-    private static final String SEARCH_CHAMPIONSHIP = "Scottish Championship";
-    private static final String FIRST_TEAM = "Dunfermline";
-    private static final String SECOND_TEAM = "Partick Thistle";
-    private static final String FIRST_SCORE = "5";
-    private static final String SECOND_SCORE = "1";
-    private static final String MONTH_YEAR = "2019 November";
+    protected String SEARCH_CHAMPIONSHIP = "Scottish Championship";
+    protected String FIRST_TEAM = "Dunfermline";
+    protected String SECOND_TEAM = "Partick Thistle";
+    protected String FIRST_SCORE = "5";
+    protected String SECOND_SCORE = "1";
+    protected String MONTH_YEAR = "2019 November";
 
-    private static final String SEARCH_CHAMPIONSHIP_SECOND = "National League";
-    private static final String FIRST_TEAM_SECOND = "Notts County";
-    private static final String SECOND_TEAM_SECOND = "Barnet";
-    private static final String FIRST_SCORE_SECOND = "2";
-    private static final String SECOND_SCORE_SECOND = "0";
-    private static final String MONTH_YEAR_SECOND = "2020 July";
+    protected String SEARCH_CHAMPIONSHIP_SECOND = "National League";
+    protected String FIRST_TEAM_SECOND = "Notts County";
+    protected String SECOND_TEAM_SECOND = "Barnet";
+    protected String FIRST_SCORE_SECOND = "2";
+    protected String SECOND_SCORE_SECOND = "0";
+    protected String MONTH_YEAR_SECOND = "2020 July";
 
-    private static final String SEARCH_CHAMPIONSHIP_THIRD = "Europa League";
-    private static final String FIRST_TEAM_THIRD = "LASK";
-    private static final String SECOND_TEAM_THIRD = "Manchester United";
-    private static final String FIRST_SCORE_THIRD = "0";
-    private static final String SECOND_SCORE_THIRD = "5";
-    private static final String MONTH_YEAR_THIRD = "2020 March";
+    protected String SEARCH_CHAMPIONSHIP_THIRD = "Europa League";
+    protected String FIRST_TEAM_THIRD = "LASK";
+    protected String SECOND_TEAM_THIRD = "Manchester United";
+    protected String FIRST_SCORE_THIRD = "0";
+    protected String SECOND_SCORE_THIRD = "5";
+    protected String MONTH_YEAR_THIRD = "2020 March";
 
-    private static final String SEARCH_CHAMPIONSHIP_FOURTH = "Premier League";
-    private static final String FIRST_TEAM_FOURTH = "Burnley";
-    private static final String SECOND_TEAM_FOURTH = "Crystal Palace";
-    private static final String FIRST_SCORE_FOURTH = "0";
-    private static final String SECOND_SCORE_FOURTH = "2";
-    private static final String MONTH_YEAR_FOURTH = "2019 November";
+    protected String SEARCH_CHAMPIONSHIP_FOURTH = "Premier League";
+    protected String FIRST_TEAM_FOURTH = "Burnley";
+    protected String SECOND_TEAM_FOURTH = "Crystal Palace";
+    protected String FIRST_SCORE_FOURTH = "0";
+    protected String SECOND_SCORE_FOURTH = "2";
+    protected String MONTH_YEAR_FOURTH = "2019 November";
 
-    private static final String SEARCH_CHAMPIONSHIP_FIFTH = "England Football Team";
-    private static final String FIRST_TEAM_FIFTH = "Kosovo";
-    private static final String SECOND_TEAM_FIFTH = "England";
-    private static final String FIRST_SCORE_FIFTH = "0";
-    private static final String SECOND_SCORE_FIFTH = "4";
-    private static final String MONTH_YEAR_FIFTH = "2019 November";
+    protected String SEARCH_CHAMPIONSHIP_FIFTH = "England Football Team";
+    protected String FIRST_TEAM_FIFTH = "Kosovo";
+    protected String SECOND_TEAM_FIFTH = "England";
+    protected String FIRST_SCORE_FIFTH = "0";
+    protected String SECOND_SCORE_FIFTH = "4";
+    protected String MONTH_YEAR_FIFTH = "2019 November";
 
 
     @Test
