@@ -96,23 +96,23 @@ public class ScoresAndFixturesPage extends AbstractPage {
         getSearchChampionShip().sendKeys(champion + Keys.ARROW_DOWN + Keys.ENTER);
     }
 
-    public List<WebElement> getListOfMonthesAndYears() {
+    public List<WebElement> getListOfMonthsAndYears() {
         return listOfMonthesAndYears;
-    } //
+    }
 
 
     public boolean getNthMonthAndClickWhereTeamsArePresented(String firstScore, String secondScore, String firstTeam, String secondTeam, String monthAndYear) {
         List<Integer> scoresOnTheFixturesPage = new ArrayList<>();
         List<Integer> scoresOnTheTeamPage = new ArrayList<>();
         boolean result = false;
-        for (int i = 0; i < getListOfMonthesAndYears().size(); i++) {
+        for (int i = 0; i < getListOfMonthsAndYears().size(); i++) {
             if (getScoreContent().isDisplayed()) {
-                getListOfMonthesAndYears().get(i).click();
+                getListOfMonthsAndYears().get(i).click();
             }
             for (int j = 0; j < getListOfTwoTeams().size(); j++) {
                 if ((getListOfTwoTeams().get(j).getText().contains(firstTeam)) && (getListOfTwoTeams().get(j).getText().contains(secondTeam))) {
                     for (int k = 0; k < getTeamAndScore().size(); k++) {
-                        if (((getTeamAndScore().get(k).getText().contains(firstScore) && getTeamAndScore().get(k).getText().contains(secondScore))) && (getListOfTwoTeams().get(j).getText().contains(firstTeam) && getListOfTwoTeams().get(j).getText().contains(secondTeam)) && (getListOfMonthesAndYears().get(i).getText().replaceAll("\\s+", " ").substring(4).contains(monthAndYear))) {
+                        if (((getTeamAndScore().get(k).getText().contains(firstScore) && getTeamAndScore().get(k).getText().contains(secondScore))) && (getListOfTwoTeams().get(j).getText().contains(firstTeam) && getListOfTwoTeams().get(j).getText().contains(secondTeam)) && (getListOfMonthsAndYears().get(i).getText().replaceAll("\\s+", " ").substring(4).contains(monthAndYear))) {
                             scoresOnTheFixturesPage.add(Integer.parseInt(getScoreLeft().get(k).getText()));
                             scoresOnTheFixturesPage.add(Integer.parseInt(getScoreRight().get(k).getText()));
                             getListOfTwoTeams().get(j).click();
