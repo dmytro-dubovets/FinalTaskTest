@@ -37,6 +37,10 @@ public class HowToShareYourStoriesPage extends AbstractPage {
         return checkboxOver16;
     }
 
+    public void clickOnCheckBoxOver16() {
+        getCheckboxOver16().click();
+    }
+
     public WebElement getTextArea() {
         return textArea;
     }
@@ -84,10 +88,16 @@ public class HowToShareYourStoriesPage extends AbstractPage {
         return errorMsg.get(0);
     }
 
-    public void clickOnAllCheckBoxes() {
+/*    public void clickOnAllCheckBoxes() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         for (WebElement checkbox : getCheckBoxes()) {
             js.executeScript("arguments[0].click()", checkbox);
+        }
+    }*/
+
+    public void clickOnAllCheckBoxes() {
+        for (WebElement checkbox : getCheckBoxes()) {
+            checkbox.click();
         }
     }
 }
