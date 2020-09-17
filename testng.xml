@@ -21,4 +21,9 @@
             <class name="tests.VerifiesThatUserCanSubmitAQuestionInTheForm"/>
         </classes>
     </test>
+    <test name="Task BBC2.Part2 - Verifies that scores display correctly">
+        <classes>
+            <class name="tests.VerifiesThatTeamScoresDisplayCorrectly"/>
+        </classes>
+    </test>
 </suite>

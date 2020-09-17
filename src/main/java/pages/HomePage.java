@@ -1,12 +1,10 @@
 package pages;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage extends AbstractPage {
 
@@ -18,12 +16,17 @@ public class HomePage extends AbstractPage {
     private WebElement news;
     @FindBy(xpath = "//input[@id='orb-search-q']")
     private WebElement searchButton;
+    @FindBy(xpath = "//div[@id='orb-nav-links']//a[contains(text(),'Sport')]")
+    private WebElement sport;
 
     public HomePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
     }
 
+    public void clickOnSport() {
+        sport.click();
+    }
 
     public void clickOnNews() {
         news.click();
