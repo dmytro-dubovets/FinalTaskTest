@@ -19,14 +19,10 @@ public class SearchPage extends AbstractPage {
         PageFactory.initElements(this.driver, this);
     }
 
-    public List<WebElement> getHeadlineOfSearchArticle() {
-        return headlineOfSearchArticle;
-    }
-
     public String getFirstListOfHeadlineOfSearchArticles() {
-        ArrayList<String> actualListOfArticles = new ArrayList<>();
+        List<String> actualListOfArticles = new ArrayList<>();
 
-        for (WebElement article : getHeadlineOfSearchArticle()) {
+        for (WebElement article : headlineOfSearchArticle) {
             String headlineTextArticle = article.getText();
             try {
                 if (headlineTextArticle == null) {

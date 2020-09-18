@@ -6,15 +6,17 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class SportPage extends AbstractPage {
+
+    @FindBy(xpath = "//a[contains(@class,'sp-c-sport-navigation__link')][contains(text(),'Football')]")
+    private WebElement football;
+
     public SportPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
     }
 
-    @FindBy(xpath = "//a[@class='sp-c-sport-navigation__link qa-primary-item sp-nav-click-stat'][contains(text(),'Football')]")
-    private WebElement football;
-
-    public void clickOnFootball() {
+    public FootballPage clickOnFootball() {
         football.click();
+        return new FootballPage(driver);
     }
 }

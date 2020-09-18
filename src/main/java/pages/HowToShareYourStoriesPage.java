@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,16 +10,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HowToShareYourStoriesPage extends AbstractPage {
+
     @FindBy(xpath = "//button[@class='button']")
     private WebElement submitButton;
+
     @FindBy(xpath = "//div[@class='input-error-message']")
     private List<WebElement> errorMessages;
-    @FindBy(xpath = "//div[@id='orb-modules']//div[@class='checkbox'][2]//input[@type='checkbox']")
+
+    @FindBy(xpath = "//p[contains(text(), 'I am over 16 years old')]")
     private WebElement checkboxOver16;
+
     @FindBy(xpath = "//input[@placeholder='Name']")
     private WebElement inputName;
+
     @FindBy(xpath = "//div[@class='long-text-input-container']/textarea[@class='text-input--long']")
     private WebElement textArea;
+
     @FindBy(xpath = "//div[@id='orb-modules']//div[@class='checkbox']//input[@type='checkbox']")
     private List<WebElement> getCheckBoxes;
 
@@ -33,12 +38,9 @@ public class HowToShareYourStoriesPage extends AbstractPage {
         return getCheckBoxes;
     }
 
-    public WebElement getCheckboxOver16() {
-        return checkboxOver16;
-    }
-
-    public void clickOnCheckBoxOver16() {
-        getCheckboxOver16().click();
+    public HowToShareYourStoriesPage clickOnCheckBoxOver16() {
+        checkboxOver16.click();
+        return this;
     }
 
     public WebElement getTextArea() {
@@ -49,24 +51,23 @@ public class HowToShareYourStoriesPage extends AbstractPage {
         return inputName;
     }
 
-    public void sendName(String name) {
+    public HowToShareYourStoriesPage sendName(String name) {
         getInputName().sendKeys(name + Keys.ENTER);
+        return this;
     }
 
-    public void sendStory(String story) {
+    public HowToShareYourStoriesPage sendStory(String story) {
         getTextArea().sendKeys(story + Keys.ENTER);
-    }
-
-    public WebElement getSubmitButton() {
-        return submitButton;
+        return this;
     }
 
     public List<WebElement> getErrorMessages() {
         return errorMessages;
     }
 
-    public void clickOnSubmitButton() {
-        getSubmitButton().click();
+    public HowToShareYourStoriesPage clickOnSubmitButton() {
+        submitButton.click();
+        return this;
     }
 
     public boolean ifErrorsMessagesAreDisplayed() {
@@ -88,16 +89,10 @@ public class HowToShareYourStoriesPage extends AbstractPage {
         return errorMsg.get(0);
     }
 
-/*    public void clickOnAllCheckBoxes() {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        for (WebElement checkbox : getCheckBoxes()) {
-            js.executeScript("arguments[0].click()", checkbox);
-        }
-    }*/
-
-    public void clickOnAllCheckBoxes() {
+    public HowToShareYourStoriesPage clickOnAllCheckBoxes() {
         for (WebElement checkbox : getCheckBoxes()) {
             checkbox.click();
         }
+        return this;
     }
 }
