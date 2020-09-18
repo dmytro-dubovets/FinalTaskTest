@@ -13,6 +13,8 @@ public class CommonConditions {
 
     protected WebDriver driver;
     protected String url = "https://www.bbc.com/";
+
+    //enum
     protected String Chrome = "Chrome";
     protected String FireFox = "Firefox";
 
@@ -42,6 +44,6 @@ public class CommonConditions {
 
     @AfterClass
     public void tearDown() {
-        driver.close();
+        driver.quit();
     }
 }

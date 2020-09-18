@@ -11,21 +11,25 @@ public class VerifiesThatUserCanSubmitAQuestionInTheForm extends CommonCondition
 
     @Test
     public void verifiesThatUserCanSubmitAQuestion() {
-        HomePage homePage = new HomePage(driver);
+        /*HomePage homePage = new HomePage(driver);
         NewsPage newsPage = new NewsPage(driver);
         CoronaVirusPage coronaVirusPage = new CoronaVirusPage(driver);
-        CoronaVirusStoriesPage coronaVirusStoriesPage = new CoronaVirusStoriesPage(driver);
-        HowToShareYourStoriesPage howToShareYourStoriesPage = new HowToShareYourStoriesPage(driver);
-        homePage.clickOnNews();
-        newsPage.waitAndClosePopUp();
-        newsPage.clickOnTheCoronaVirusTab();
-        coronaVirusPage.clickOnGetStories();
-        homePage.waitForPageLoadComplete(15);
-        coronaVirusStoriesPage.clickOnHowToShareYourStories();
-        howToShareYourStoriesPage.clickOnSubmitButton();
-        boolean errorMessages = howToShareYourStoriesPage.ifErrorsMessagesAreDisplayed();
-        Assert.assertTrue(errorMessages, "The error messages like: " + howToShareYourStoriesPage.errorMessages() + " are not displayed");
-        boolean title = homePage.ifTitleIsEquals(titleOfHowToShare);
+        CoronaVirusStoriesPage coronaVirusStoriesPage = new CoronaVirusStoriesPage(driver);*/
+        /*HowToShareYourStoriesPage howToShareYourStoriesPage = new HowToShareYourStoriesPage(driver);*/
+        new HomePage(driver)
+                .clickOnNews()
+                .waitAndClosePopUp()
+                .clickOnTheCoronaVirusTab()
+                .clickOnGetStories()
+                .waitForPageLoadComplete(15)
+                .clickOnHowToShareYourStories()
+                .clickOnSubmitButton();
+        boolean errorMessages = new HowToShareYourStoriesPage(driver)
+                .ifErrorsMessagesAreDisplayed();
+        Assert.assertTrue(errorMessages, "The error messages like: " + new HowToShareYourStoriesPage(driver)
+                .errorMessages() + " are not displayed");
+        boolean title = new HomePage(driver)
+                .isTitleEquals(titleOfHowToShare);
         Assert.assertTrue(title, "The actual title is not equal to the expected title " + titleOfHowToShare);
     }
 
@@ -46,7 +50,7 @@ public class VerifiesThatUserCanSubmitAQuestionInTheForm extends CommonCondition
         howToShareYourStoriesPage.clickOnSubmitButton();
         boolean errorMessages = howToShareYourStoriesPage.ifErrorsMessagesAreDisplayed();
         Assert.assertTrue(errorMessages, "The error messages like: " + howToShareYourStoriesPage.errorMessages() + " are not displayed");
-        boolean title = homePage.ifTitleIsEquals(titleOfHowToShare);
+        boolean title = homePage.isTitleEquals(titleOfHowToShare);
         Assert.assertTrue(title, "The actual title is not equal to the expected title " + titleOfHowToShare);
     }
 
@@ -68,7 +72,7 @@ public class VerifiesThatUserCanSubmitAQuestionInTheForm extends CommonCondition
         howToShareYourStoriesPage.clickOnSubmitButton();
         boolean errorMessages = howToShareYourStoriesPage.ifErrorsMessagesAreDisplayed();
         Assert.assertTrue(errorMessages, "The error messages like: " + howToShareYourStoriesPage.errorMessages() + " are not displayed");
-        boolean title = homePage.ifTitleIsEquals(titleOfHowToShare);
+        boolean title = homePage.isTitleEquals(titleOfHowToShare);
         Assert.assertTrue(title, "The actual title is not equal to the expected title " + titleOfHowToShare);
     }
 
@@ -90,7 +94,7 @@ public class VerifiesThatUserCanSubmitAQuestionInTheForm extends CommonCondition
         howToShareYourStoriesPage.clickOnSubmitButton();
         boolean errorMessages = howToShareYourStoriesPage.ifErrorsMessagesAreDisplayed();
         Assert.assertTrue(errorMessages, "The error messages like: " + howToShareYourStoriesPage.errorMessages() + " are not displayed");
-        boolean title = homePage.ifTitleIsEquals(titleOfHowToShare);
+        boolean title = homePage.isTitleEquals(titleOfHowToShare);
         Assert.assertTrue(title, "The actual title is not equal to the expected title " + titleOfHowToShare);
     }
 }

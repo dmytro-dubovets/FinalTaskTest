@@ -12,39 +12,30 @@ import java.util.List;
 
 
 public class NewsPage extends AbstractPage {
-    protected WebDriverWait wait;
 
     @FindBy(xpath = "//span[contains(text(),'BBC News')]")
     private WebElement expectedArticle;
     @FindBy(xpath = "//ul[@class='gs-o-list-ui--top-no-border nw-c-nav__wide-sections']/li/a/span[1]")
     private List<WebElement> actualListOfSecondaryArticleTitles;
-
-
-    public WebElement getCoronaVirusTab() {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.elementToBeClickable(coronaVirusTab));
-        return coronaVirusTab;
-    }
-
     @FindBy(xpath = "//li[@class='gs-o-list-ui__item--flush gel-long-primer gs-u-display-block gs-u-float-left nw-c-nav__wide-menuitem-container']//span[contains(text(),'Coronavirus')]")
     private WebElement coronaVirusTab;
+    @FindBy(xpath = "//button[@class='sign_in-exit']")
+    private WebElement closeButton;
 
     public NewsPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
     }
 
-    @FindBy(xpath = "//button[@class='sign_in-exit']")
-    private WebElement closeButton;
-
-    public void waitAndClosePopUp() {
-        wait = new WebDriverWait(driver, 10);
+    public NewsPage waitAndClosePopUp() {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(closeButton)).click();
+        return this;
     }
 
-    public NewsPage clickOnTheCoronaVirusTab() {
+    public CoronaVirusPage clickOnTheCoronaVirusTab() {
         coronaVirusTab.click();
-        return this;
+        return new CoronaVirusPage(driver);
     }
 
     public String getExpectedTextOfTheCoronaVirusTab() {
@@ -52,18 +43,14 @@ public class NewsPage extends AbstractPage {
 
     }
 
-    public List<WebElement> getActualListOfSecondaryArticleTitles() {
-        return actualListOfSecondaryArticleTitles;
-    }
-
     public String getExpectedTextOfTheArticle() {
         return expectedArticle.getText();
     }
 
 
-    public ArrayList<String> stringArrayListOfActualSecondaryArticleTitles() {
-        ArrayList<String> actualList = new ArrayList<>();
-        for (WebElement tab : getActualListOfSecondaryArticleTitles()) {
+    public List<String> stringArrayListOfActualSecondaryArticleTitles() {
+        List<String> actualList = new ArrayList<>();
+        for (WebElement tab : actualListOfSecondaryArticleTitles) {
             String tabOfList = tab.getText();
             if (tabOfList.length() != 0) {
                 actualList.add(tabOfList);
