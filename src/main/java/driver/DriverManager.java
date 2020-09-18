@@ -8,18 +8,16 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.concurrent.TimeUnit;
 
 public class DriverManager {
-    private WebDriver driver;
     private final String URL = "https://www.bbc.com/";
-    private final String Chrome = "Chrome";
-    private final String FireFox = "Firefox";
+    private WebDriver driver;
 
-    public void setDriver(String browser) {
+    public void setDriver(Browser browser) {
         switch (browser) {
-            case "Chrome":
+            case CHROME:
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
                 break;
-            case "Firefox":
+            case FIREFOX:
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
                 break;
@@ -27,9 +25,14 @@ public class DriverManager {
     }
 
     public void profileSetUp() {
-        setDriver(Chrome);
+        setDriver(Browser.CHROME);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.get(URL);
+    }
+
+    enum Browser {
+        CHROME,
+        FIREFOX
     }
 }
