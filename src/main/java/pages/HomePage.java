@@ -18,26 +18,30 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//div[@id='orb-nav-links']//a[contains(text(),'Sport')]")
     private WebElement sport;
 
-    public HomePage() {
-    }
+    @FindBy(xpath = "//button[@class='sign_in-exit']")
+    private WebElement closeButton;
 
     public HomePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
     }
 
-    public void clickOnSport() {
+    public SportPage clickOnSport() {
         sport.click();
+        waitAndClosePopUp(closeButton);
+        return new SportPage(driver);
     }
 
     public NewsPage clickOnNews() {
         news.click();
+        waitAndClosePopUp(closeButton);
         return new NewsPage(driver);
     }
 
 
-    public void typeSearchWordAndPressEnter(String searchWord) {
+    public HomePage typeSearchWordAndPressEnter(String searchWord) {
         searchButton.sendKeys(searchWord + Keys.ENTER);
+        return this;
     }
 
     public boolean isTitleEquals(String title) {

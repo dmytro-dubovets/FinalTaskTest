@@ -17,7 +17,7 @@ public class HowToShareYourStoriesPage extends AbstractPage {
     @FindBy(xpath = "//div[@class='input-error-message']")
     private List<WebElement> errorMessages;
 
-    @FindBy(xpath = "//div[@id='orb-modules']//div[@class='checkbox'][2]//input[@type='checkbox']") // ?
+    @FindBy(xpath = "//p[contains(text(), 'I am over 16 years old')]")
     private WebElement checkboxOver16;
 
     @FindBy(xpath = "//input[@placeholder='Name']")
@@ -38,12 +38,9 @@ public class HowToShareYourStoriesPage extends AbstractPage {
         return getCheckBoxes;
     }
 
-    public WebElement getCheckboxOver16() {
-        return checkboxOver16;
-    }
-
-    public void clickOnCheckBoxOver16() {
-        getCheckboxOver16().click();
+    public HowToShareYourStoriesPage clickOnCheckBoxOver16() {
+        checkboxOver16.click();
+        return this;
     }
 
     public WebElement getTextArea() {
@@ -54,12 +51,14 @@ public class HowToShareYourStoriesPage extends AbstractPage {
         return inputName;
     }
 
-    public void sendName(String name) {
+    public HowToShareYourStoriesPage sendName(String name) {
         getInputName().sendKeys(name + Keys.ENTER);
+        return this;
     }
 
-    public void sendStory(String story) {
+    public HowToShareYourStoriesPage sendStory(String story) {
         getTextArea().sendKeys(story + Keys.ENTER);
+        return this;
     }
 
     public List<WebElement> getErrorMessages() {
@@ -90,9 +89,10 @@ public class HowToShareYourStoriesPage extends AbstractPage {
         return errorMsg.get(0);
     }
 
-    public void clickOnAllCheckBoxes() {
+    public HowToShareYourStoriesPage clickOnAllCheckBoxes() {
         for (WebElement checkbox : getCheckBoxes()) {
             checkbox.click();
         }
+        return this;
     }
 }

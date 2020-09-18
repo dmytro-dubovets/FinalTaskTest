@@ -4,13 +4,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class CoronaVirusStoriesPage extends AbstractPage {
 
-    //change xpath
-    @FindBy(xpath = "//a[@class='gs-c-promo-heading gs-o-faux-block-link__overlay-link gel-pica-bold nw-o-link-split__anchor']")
+    @FindBy(xpath = "//a[contains(@class,'gel-pica-bold nw-o-link-split__anchor')]")
     private List<WebElement> linksLifeInLockDown;
 
     public CoronaVirusStoriesPage(WebDriver driver) {
@@ -22,9 +22,10 @@ public class CoronaVirusStoriesPage extends AbstractPage {
         return linksLifeInLockDown;
     }
 
-    public CoronaVirusStoriesPage clickOnHowToShareYourStories() {
+    public HowToShareYourStoriesPage clickOnHowToShareYourStories() {
         getHowToShareYourStories().click();
-        return this;
+        waitForPageLoadComplete(15);
+        return new HowToShareYourStoriesPage(driver);
     }
 
     private WebElement getHowToShareYourStories() {

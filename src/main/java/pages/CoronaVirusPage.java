@@ -9,11 +9,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CoronaVirusPage extends AbstractPage {
-    // change xpath should be shooter
-    private final By yourCoronaVirusStr = By.xpath("//li[@class='gs-o-list-ui__item--flush gel-long-primer gs-u-display-block gs-u-float-left nw-c-nav__secondary-menuitem-container']//span[contains(text(),'Your Coronavirus Stories')]");
 
+    private final By yourCoronaVirusStr = By
+            .xpath("//li[contains(@class,'nw-c-nav__secondary-menuitem-container')]//span[contains(text(),'Your Coronavirus Stories')]");
 
-    @FindBy(xpath = "//li[@class='gs-o-list-ui__item--flush gel-long-primer gs-u-display-block gs-u-float-left nw-c-nav__secondary-menuitem-container']//span[contains(text(),'Your Coronavirus Stories')]")
+    @FindBy(xpath = "//li[contains(@class,'nw-c-nav__secondary-menuitem-container')]//span[contains(text(),'Your Coronavirus Stories')]")
     private WebElement yourCoronaVirusStories;
 
     public CoronaVirusPage(WebDriver driver) {
@@ -21,10 +21,10 @@ public class CoronaVirusPage extends AbstractPage {
         PageFactory.initElements(this.driver, this);
     }
 
-    public CoronaVirusPage clickOnGetStories() {
+    public CoronaVirusStoriesPage clickOnGetStories() {
         new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.presenceOfElementLocated(yourCoronaVirusStr));
         yourCoronaVirusStories.click();
-        return this;
+        return new CoronaVirusStoriesPage(driver);
     }
 }

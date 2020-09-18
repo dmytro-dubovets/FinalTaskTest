@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class AbstractPage {
@@ -11,7 +13,9 @@ public abstract class AbstractPage {
         this.driver = driver;
     }
 
-    public AbstractPage() {
+    public void waitAndClosePopUp(WebElement closeButton) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOf(closeButton)).click();
     }
 
     public void waitForPageLoadComplete(int timeToWait) {

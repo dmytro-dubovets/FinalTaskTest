@@ -9,25 +9,20 @@ import org.testng.annotations.BeforeClass;
 
 import java.util.concurrent.TimeUnit;
 
-public class CommonConditions {
-
+public abstract class CommonConditions {
+    private final String URL = "https://www.bbc.com/";
     protected WebDriver driver;
-    protected String url = "https://www.bbc.com/";
-
-    //enum
-    protected String Chrome = "Chrome";
-    protected String FireFox = "Firefox";
 
     public CommonConditions() {
     }
 
-    public void setDriver(String browser) {
+    public void setDriver(Browser browser) {
         switch (browser) {
-            case "Chrome":
+            case CHROME:
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
                 break;
-            case "Firefox":
+            case FIREFOX:
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
                 break;
@@ -36,14 +31,19 @@ public class CommonConditions {
 
     @BeforeClass
     public void profileSetUp() {
-        setDriver(Chrome);
+        setDriver(Browser.CHROME);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.get(url);
+        driver.get(URL);
     }
 
     @AfterClass
     public void tearDown() {
         driver.quit();
+    }
+
+    enum Browser {
+        CHROME,
+        FIREFOX
     }
 }

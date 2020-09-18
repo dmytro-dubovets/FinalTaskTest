@@ -12,10 +12,9 @@ public class CheckTheCategoryLinkOfTheFirstHeadlineArticle extends CommonConditi
     public void checkThatSearchWordIsPresentedInTheFirstArticle() {
         String actualTab = new HomePage(driver)
                 .clickOnNews()
-                .waitAndClosePopUp()
                 .getExpectedTextOfTheCoronaVirusTab();
-
-        //        .typeSearchWordAndPressEnter(actualTab);
+        new HomePage(driver)
+                .typeSearchWordAndPressEnter(actualTab);
         String expectedHeadlineFirstArticle = new SearchPage(driver)
                 .getFirstListOfHeadlineOfSearchArticles();
         Assert.assertTrue(expectedHeadlineFirstArticle.contains(actualTab), "The first headline article " +

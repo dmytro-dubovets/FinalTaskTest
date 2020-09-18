@@ -2,9 +2,10 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.*;
+import pages.HomePage;
+import pages.ScoresAndFixturesPage;
 
-public class VerifiesThatTeamScoresDisplayCorrectly extends CommonConditions{
+public class VerifiesThatTeamScoresDisplayCorrectly extends CommonConditions {
     protected String SEARCH_CHAMPIONSHIP = "Scottish Championship";
     protected String FIRST_TEAM = "Dunfermline";
     protected String SECOND_TEAM = "Partick Thistle";
@@ -43,76 +44,61 @@ public class VerifiesThatTeamScoresDisplayCorrectly extends CommonConditions{
 
     @Test
     public void checkThatTeamsScores() {
-        HomePage homePage = new HomePage(driver);
-        SportPage sportPage = new SportPage(driver);
-        NewsPage newsPage = new NewsPage(driver);
-        FootballPage footballPage = new FootballPage(driver);
-        ScoresAndFixturesPage scoresAndFixturesPage = new ScoresAndFixturesPage(driver);
-        homePage.clickOnSport();
-        newsPage.waitAndClosePopUp();
-        sportPage.clickOnFootball();
-        footballPage.clickOnScoresAndFixtures();
-        scoresAndFixturesPage.typeInTheSearchAndPressEnter(SEARCH_CHAMPIONSHIP);
-        Assert.assertTrue(scoresAndFixturesPage.getNthMonthAndClickWhereTeamsArePresented(FIRST_SCORE, SECOND_SCORE, FIRST_TEAM, SECOND_TEAM, MONTH_YEAR), "The Score is not correct");
+        new HomePage(driver)
+                .clickOnSport()
+                .clickOnFootball()
+                .clickOnScoresAndFixtures()
+                .typeInTheSearchAndPressEnter(SEARCH_CHAMPIONSHIP);
+        Assert.assertTrue(new ScoresAndFixturesPage(driver)
+                        .getNthMonthAndClickWhereTeamsArePresented(FIRST_SCORE, SECOND_SCORE, FIRST_TEAM,
+                                SECOND_TEAM, MONTH_YEAR), "The Score is not correct");
     }
 
     @Test
     public void checkThatTeamsScoresSecondChampionShip() {
-        HomePage homePage = new HomePage(driver);
-        SportPage sportPage = new SportPage(driver);
-        NewsPage newsPage = new NewsPage(driver);
-        FootballPage footballPage = new FootballPage(driver);
-        ScoresAndFixturesPage scoresAndFixturesPage = new ScoresAndFixturesPage(driver);
-        homePage.clickOnSport();
-        newsPage.waitAndClosePopUp();
-        sportPage.clickOnFootball();
-        footballPage.clickOnScoresAndFixtures();
-        scoresAndFixturesPage.typeInTheSearchAndPressEnter(SEARCH_CHAMPIONSHIP_SECOND);
-        Assert.assertTrue(scoresAndFixturesPage.getNthMonthAndClickWhereTeamsArePresented(FIRST_SCORE_SECOND, SECOND_SCORE_SECOND, FIRST_TEAM_SECOND, SECOND_TEAM_SECOND, MONTH_YEAR_SECOND), "The Score is not correct");
+        new HomePage(driver)
+                .clickOnSport()
+                .clickOnFootball()
+                .clickOnScoresAndFixtures()
+                .typeInTheSearchAndPressEnter(SEARCH_CHAMPIONSHIP_SECOND);
+        Assert.assertTrue(new ScoresAndFixturesPage(driver)
+                .getNthMonthAndClickWhereTeamsArePresented(FIRST_SCORE_SECOND, SECOND_SCORE_SECOND, FIRST_TEAM_SECOND,
+                        SECOND_TEAM_SECOND, MONTH_YEAR_SECOND), "The Score is not correct");
     }
 
     @Test
     public void checkThatTeamsScoresThirdChampionShip() {
-        HomePage homePage = new HomePage(driver);
-        SportPage sportPage = new SportPage(driver);
-        NewsPage newsPage = new NewsPage(driver);
-        FootballPage footballPage = new FootballPage(driver);
-        ScoresAndFixturesPage scoresAndFixturesPage = new ScoresAndFixturesPage(driver);
-        homePage.clickOnSport();
-        newsPage.waitAndClosePopUp();
-        sportPage.clickOnFootball();
-        footballPage.clickOnScoresAndFixtures();
-        scoresAndFixturesPage.typeInTheSearchAndPressEnter(SEARCH_CHAMPIONSHIP_THIRD);
-        Assert.assertTrue(scoresAndFixturesPage.getNthMonthAndClickWhereTeamsArePresented(FIRST_SCORE_THIRD, SECOND_SCORE_THIRD, FIRST_TEAM_THIRD, SECOND_TEAM_THIRD, MONTH_YEAR_THIRD), "The Score is not correct");
+        new HomePage(driver)
+                .clickOnSport()
+                .clickOnFootball()
+                .clickOnScoresAndFixtures()
+                .typeInTheSearchAndPressEnter(SEARCH_CHAMPIONSHIP_THIRD);
+        Assert.assertTrue(new ScoresAndFixturesPage(driver)
+                .getNthMonthAndClickWhereTeamsArePresented(FIRST_SCORE_THIRD, SECOND_SCORE_THIRD, FIRST_TEAM_THIRD,
+                        SECOND_TEAM_THIRD, MONTH_YEAR_THIRD), "The Score is not correct");
     }
 
     @Test
     public void checkThatTeamsScoresFourthChampionShip() {
-        HomePage homePage = new HomePage(driver);
-        SportPage sportPage = new SportPage(driver);
-        NewsPage newsPage = new NewsPage(driver);
-        FootballPage footballPage = new FootballPage(driver);
-        ScoresAndFixturesPage scoresAndFixturesPage = new ScoresAndFixturesPage(driver);
-        homePage.clickOnSport();
-        newsPage.waitAndClosePopUp();
-        sportPage.clickOnFootball();
-        footballPage.clickOnScoresAndFixtures();
-        scoresAndFixturesPage.typeInTheSearchAndPressEnter(SEARCH_CHAMPIONSHIP_FOURTH);
-        Assert.assertTrue(scoresAndFixturesPage.getNthMonthAndClickWhereTeamsArePresented(FIRST_SCORE_FOURTH, SECOND_SCORE_FOURTH, FIRST_TEAM_FOURTH, SECOND_TEAM_FOURTH, MONTH_YEAR_FOURTH), "The Score is not correct");
+        new HomePage(driver)
+                .clickOnSport()
+                .clickOnFootball()
+                .clickOnScoresAndFixtures()
+                .typeInTheSearchAndPressEnter(SEARCH_CHAMPIONSHIP_FOURTH);
+        Assert.assertTrue(new ScoresAndFixturesPage(driver)
+                .getNthMonthAndClickWhereTeamsArePresented(FIRST_SCORE_FOURTH, SECOND_SCORE_FOURTH, FIRST_TEAM_FOURTH,
+                        SECOND_TEAM_FOURTH, MONTH_YEAR_FOURTH), "The Score is not correct");
     }
 
     @Test
     public void checkThatTeamsScoresFifthChampionShip() {
-        HomePage homePage = new HomePage(driver);
-        SportPage sportPage = new SportPage(driver);
-        NewsPage newsPage = new NewsPage(driver);
-        FootballPage footballPage = new FootballPage(driver);
-        ScoresAndFixturesPage scoresAndFixturesPage = new ScoresAndFixturesPage(driver);
-        homePage.clickOnSport();
-        newsPage.waitAndClosePopUp();
-        sportPage.clickOnFootball();
-        footballPage.clickOnScoresAndFixtures();
-        scoresAndFixturesPage.typeInTheSearchAndPressEnter(SEARCH_CHAMPIONSHIP_FIFTH);
-        Assert.assertTrue(scoresAndFixturesPage.getNthMonthAndClickWhereTeamsArePresented(FIRST_SCORE_FIFTH, SECOND_SCORE_FIFTH, FIRST_TEAM_FIFTH, SECOND_TEAM_FIFTH, MONTH_YEAR_FIFTH), "The Score is not correct");
+        new HomePage(driver)
+                .clickOnSport()
+                .clickOnFootball()
+                .clickOnScoresAndFixtures()
+                .typeInTheSearchAndPressEnter(SEARCH_CHAMPIONSHIP_FIFTH);
+        Assert.assertTrue(new ScoresAndFixturesPage(driver)
+                .getNthMonthAndClickWhereTeamsArePresented(FIRST_SCORE_FIFTH, SECOND_SCORE_FIFTH, FIRST_TEAM_FIFTH,
+                        SECOND_TEAM_FIFTH, MONTH_YEAR_FIFTH), "The Score is not correct");
     }
 }

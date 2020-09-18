@@ -20,7 +20,6 @@ public class CheckSecondaryArticleTitles extends CommonConditions {
     public void checkSecondaryArticles() {
         List<String> actualSecondaryArticleTitles = new HomePage(driver)
                 .clickOnNews()
-                .waitAndClosePopUp()
                 .stringArrayListOfActualSecondaryArticleTitles();
         Assert.assertEquals(listOfExpectedArticleTitles, actualSecondaryArticleTitles,
                 "The expected secondary article titles " + listOfExpectedArticleTitles +
