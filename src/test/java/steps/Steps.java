@@ -1,101 +1,66 @@
 package steps;
 
+import driver.DriverManager;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.HomePage;
+import org.openqa.selenium.WebDriver;
+import pages.*;
 
 public class Steps {
-    private HomePage homePage = new HomePage();
+    WebDriver driver = null;
 
     @Given("User opens website bbc.com")
     public void user_opens_website_bbc_com() {
-
+        new DriverManager()
+                .profileSetUp();
+        //System.out.println("On website");
     }
 
     @When("User clicks on Sport page")
     public void user_clicks_on_sport_page() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        new HomePage(driver)
+                .clickOnSport();
+        System.out.println("clicks on sport page");
     }
 
     @And("Wait for close pop up")
     public void wait_for_close_pop_up() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        new NewsPage(driver)
+                .waitAndClosePopUp();
+        System.out.println("Wait for close pop up");
     }
 
     @Then("User clicks on Football page")
     public void user_clicks_on_football_page() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        new SportPage(driver)
+                .clickOnFootball();
+        System.out.println("User clicks on football page");
     }
 
     @And("User clicks on scores and fixtures")
     public void user_clicks_on_scores_and_fixtures() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        new FootballPage(driver)
+                .clickOnScoresAndFixtures();
+        System.out.println("User is on scores and fixtures");
     }
 
-    @Then("User type in the search the name of Scottish Championship")
-    public void user_type_in_the_search_the_name_of_scottish_championship() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @Then("^User type in the search the name of (.*)$")
+    public void user_type_in_the_search_the_name_of_scottish_championship(String championships) {
+        new ScoresAndFixturesPage(driver)
+                .typeInTheSearchAndPressEnter(championships);
+        System.out.println("User type championship" + championships);
     }
 
-    @And("Check that scores is displayed correctly with typing: {int}, {int}, Dunfermline, Partick Thistle, {int} November")
-    public void check_that_scores_is_displayed_correctly_with_typing_dunfermline_partick_thistle_november(Integer int1, Integer int2, Integer int3) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @And("^Check that scores is displayed correctly with typing: (.*), (.*), (.*), (.*), (.*)$")
+    public void checkThatScoresIsDisplayedCorrectlyWithTypingFirstScoreSecondScoreFirstTeamSecondTeamMonthAndYear(String first_score,
+                                                                                                                  String second_score,
+                                                                                                                  String first_team,
+                                                                                                                  String second_team,
+                                                                                                                  String month_and_year) {
+        new ScoresAndFixturesPage(driver)
+                .getNthMonthAndClickWhereTeamsArePresented(first_score, second_score, first_team, second_team, month_and_year);
+        System.out.println(first_score + second_score + first_team + second_team + month_and_year);
     }
-
-    @Then("User type in the search the name of National League")
-    public void user_type_in_the_search_the_name_of_national_league() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
-    @Then("Check that scores is displayed correctly with typing: {int}, {int}, Notts County, Barnet, {int} July")
-    public void check_that_scores_is_displayed_correctly_with_typing_notts_county_barnet_july(Integer int1, Integer int2, Integer int3) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
-    @Then("User type in the search the name of Europa League")
-    public void user_type_in_the_search_the_name_of_europa_league() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
-    @Then("Check that scores is displayed correctly with typing: {int}, {int}, LASK, Manchester United, {int} March")
-    public void check_that_scores_is_displayed_correctly_with_typing_lask_manchester_united_march(Integer int1, Integer int2, Integer int3) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
-    @Then("User type in the search the name of Premier League")
-    public void user_type_in_the_search_the_name_of_premier_league() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
-    @Then("Check that scores is displayed correctly with typing: {int}, {int}, Burnley, Crystal Palace, {int} November")
-    public void check_that_scores_is_displayed_correctly_with_typing_burnley_crystal_palace_november(Integer int1, Integer int2, Integer int3) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
-    @Then("User type in the search the name of England Football Team")
-    public void user_type_in_the_search_the_name_of_england_football_team() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
-    @Then("Check that scores is displayed correctly with typing: {int}, {int}, Kosovo, England, {int} November")
-    public void check_that_scores_is_displayed_correctly_with_typing_kosovo_england_november(Integer int1, Integer int2, Integer int3) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
 }

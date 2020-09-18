@@ -8,10 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends AbstractPage {
 
-
-    public HomePage() {
-    }
-
     public WebElement getNews() {
         return news;
     }
