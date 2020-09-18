@@ -3,11 +3,10 @@ package tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import pages.NewsPage;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 
 
 public class CheckSecondaryArticleTitles extends CommonConditions {
