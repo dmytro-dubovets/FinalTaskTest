@@ -13,6 +13,7 @@ public class CheckTheArticle extends CommonConditions {
         String expectedArticle = new HomePage(driver)
                 .clickOnNews()
                 .getExpectedTextOfTheArticle();
-        Assert.assertEquals(expectedArticle, actualArticle, "The expected article " + expectedArticle + " is not equal to the actual article " + actualArticle + "\n");
+        Assert.assertEquals(expectedArticle, actualArticle, "The expected article " + expectedArticle +
+                " is not equal to the actual article " + actualArticle + "\n");
     }
 }
