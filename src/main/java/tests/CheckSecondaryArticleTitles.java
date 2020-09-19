@@ -1,16 +1,17 @@
 package tests;
 
+import driver.DriverFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import pages.NewsPage;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 
-public class CheckSecondaryArticleTitles extends CommonConditions {
+public class CheckSecondaryArticleTitles extends DriverFactory {
     private final List<String> listOfExpectedArticleTitles = new ArrayList<>(Arrays.asList(
             "Home", "US Election", "Coronavirus", "Video", "World",
             "UK", "Business", "Tech", "Science", "Stories", "Entertainment & Arts",

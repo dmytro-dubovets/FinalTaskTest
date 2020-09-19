@@ -1,11 +1,12 @@
 package tests;
 
+import driver.DriverFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.ScoresAndFixturesPage;
 
-public class VerifiesThatTeamScoresDisplayCorrectly extends CommonConditions {
+public class VerifiesThatTeamScoresDisplayCorrectly extends DriverFactory {
     protected String SEARCH_CHAMPIONSHIP = "Scottish Championship";
     protected String FIRST_TEAM = "Dunfermline";
     protected String SECOND_TEAM = "Partick Thistle";

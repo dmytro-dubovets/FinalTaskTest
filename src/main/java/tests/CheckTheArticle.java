@@ -1,11 +1,12 @@
 package tests;
 
+import driver.DriverFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import pages.NewsPage;
 
-public class CheckTheArticle extends CommonConditions {
+
+public class CheckTheArticle extends DriverFactory {
 
     @Test
     public void checkTheArticle() {

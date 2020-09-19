@@ -1,12 +1,13 @@
 package tests;
 
+import driver.DriverFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.NewsPage;
 import pages.SearchPage;
 
-public class CheckTheCategoryLinkOfTheFirstHeadlineArticle extends CommonConditions {
+public class CheckTheCategoryLinkOfTheFirstHeadlineArticle extends DriverFactory {
 
     @Test
     public void checkThatSearchWordIsPresentedInTheFirstArticle() {

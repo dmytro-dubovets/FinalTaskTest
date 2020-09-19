@@ -9,6 +9,22 @@ import org.openqa.selenium.support.PageFactory;
 public class HomePage extends AbstractPage {
 
 
+    public WebElement getNews() {
+        return news;
+    }
+
+    public WebElement getSearchButton() {
+        return searchButton;
+    }
+
+    public WebElement getSport() {
+        return sport;
+    }
+
+    public WebElement getCloseButton() {
+        return closeButton;
+    }
+
     @FindBy(xpath = "//div[@id='orb-nav-links']//a[contains(text(),'News')]")
     private WebElement news;
 
@@ -26,10 +42,20 @@ public class HomePage extends AbstractPage {
         PageFactory.initElements(this.driver, this);
     }
 
+    public void openURL() {
+        String URL = "https://www.bbc.com/";
+        driver.get(URL);
+    }
+
     public SportPage clickOnSport() {
         sport.click();
         waitAndClosePopUp(closeButton);
         return new SportPage(driver);
+    }
+
+    public void clickOnNewsCucumber() {
+        getNews().click();
+        waitAndClosePopUp(getCloseButton());
     }
 
     public NewsPage clickOnNews() {
@@ -37,7 +63,6 @@ public class HomePage extends AbstractPage {
         waitAndClosePopUp(closeButton);
         return new NewsPage(driver);
     }
-
 
     public HomePage typeSearchWordAndPressEnter(String searchWord) {
         searchButton.sendKeys(searchWord + Keys.ENTER);
