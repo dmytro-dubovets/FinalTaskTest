@@ -10,56 +10,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ScoresAndFixturesPage extends AbstractPage {
+
+    public List<String> scoresOnTheFixturesPage;
+    public List<String> scoresOnTheTeamPage;
+
     @FindBy(xpath = "//input[@id='downshift-0-input']")
-    private WebElement searchChampionShip;
+    public WebElement searchChampionShip;
+
     @FindBy(xpath = "//li/a[@class='sp-c-date-picker-timeline__item-inner']")
-    private List<WebElement> listOfMonthesAndYears;
-    @FindBy(xpath = "//span[@class='sp-c-fixture__number sp-c-fixture__number--home sp-c-fixture__number--ft']")
-    private List<WebElement> scoreLeft;
-    @FindBy(xpath = "//span[@class='sp-c-fixture__number sp-c-fixture__number--away sp-c-fixture__number--ft']")
-    private List<WebElement> scoreRight;
+    public List<WebElement> listOfMonthsAndYears;
+
+    @FindBy(xpath = "//span[contains(@class,'sp-c-fixture__number--home')]")
+    public List<WebElement> scoreLeft;
+
+    @FindBy(xpath = "//span[contains(@class,'sp-c-fixture__number--away')]")
+    public List<WebElement> scoreRight;
+
     @FindBy(xpath = "//div[@class='sp-c-fixture__wrapper']")
-    private List<WebElement> teamAndScore;
-    @FindBy(xpath = "//span[@class='gs-u-display-none gs-u-display-block@m qa-full-team-name sp-c-fixture__team-name-trunc']")
-    private List<WebElement> listOfTeams;
+    public List<WebElement> teamAndScore;
+
     @FindBy(xpath = "//li[@class='gs-o-list-ui__item gs-u-pb-']")
-    private List<WebElement> listOfTwoTeams;
+    public List<WebElement> listOfTwoTeams;
+
     @FindBy(xpath = "//div[@class='gel-wrap']//div[@class='gel-layout gel-layout--center']")
-    private WebElement scoreContent;
-    @FindBy(xpath = "//h1[@id='page']")
-    private WebElement resultOfTheChampion;
-    @FindBy(xpath = "//span[contains(@class,'sp-c-fixture__number sp-c-fixture__number--home sp-c-fixture__number--ft')]")
-    private WebElement leftScoreOfTeamPage;
-    @FindBy(xpath = "//span[contains(@class,'sp-c-fixture__number sp-c-fixture__number--away sp-c-fixture__number--ft')]")
-    private WebElement rightScoreOfTeamPage;
+    public WebElement scoreContent;
+
+    @FindBy(xpath = "//section[contains(@class, 'sp-c-fixture--live-session-header')]//span[contains(@class,'sp-c-fixture__number--home')]")
+    public WebElement leftScoreOfTeamPage;
+
+    @FindBy(xpath = "//section[contains(@class, 'sp-c-fixture--live-session-header')]//span[contains(@class,'sp-c-fixture__number--away')]")
+    public WebElement rightScoreOfTeamPage;
 
     public ScoresAndFixturesPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
-    }
-
-    public WebElement getResultOfTheChampion() {
-        return resultOfTheChampion;
-    }
-
-    public WebElement getScoreContent() {
-        return scoreContent;
-    }
-
-    public List<WebElement> getScoreLeft() {
-        return scoreLeft;
-    }
-
-    public List<WebElement> getScoreRight() {
-        return scoreRight;
-    }
-
-    public WebElement getLeftScoreOfTeamPage() {
-        return leftScoreOfTeamPage;
-    }
-
-    public WebElement getRightScoreOfTeamPage() {
-        return rightScoreOfTeamPage;
     }
 
     public List<WebElement> getTeamAndScore() {
@@ -80,28 +64,36 @@ public class ScoresAndFixturesPage extends AbstractPage {
     }
 
     public List<WebElement> getListOfMonthsAndYears() {
-        return listOfMonthesAndYears;
+        return listOfMonthsAndYears;
     }
 
 
-    public boolean getNthMonthAndClickWhereTeamsArePresented(String firstScore, String secondScore, String firstTeam, String secondTeam, String monthAndYear) {
-        List<Integer> scoresOnTheFixturesPage = new ArrayList<>();
-        List<Integer> scoresOnTheTeamPage = new ArrayList<>();
+    public boolean getNthMonthAndClickWhereTeamsArePresented(String firstScore, String secondScore, String firstTeam,
+                                                             String secondTeam, String monthAndYear) {
+        scoresOnTheFixturesPage = new ArrayList<>();
+        scoresOnTheTeamPage = new ArrayList<>();
         boolean result = false;
+        outerLoop:
         for (int i = 0; i < getListOfMonthsAndYears().size(); i++) {
-            if (getScoreContent().isDisplayed()) {
+            if (scoreContent.isDisplayed()) {
                 getListOfMonthsAndYears().get(i).click();
             }
             for (int j = 0; j < getListOfTwoTeams().size(); j++) {
-                if ((getListOfTwoTeams().get(j).getText().contains(firstTeam)) && (getListOfTwoTeams().get(j).getText().contains(secondTeam))) {
+                if ((getListOfTwoTeams().get(j).getText().contains(firstTeam)) &&
+                        (getListOfTwoTeams().get(j).getText().contains(secondTeam))) {
                     for (int k = 0; k < getTeamAndScore().size(); k++) {
-                        if (((getTeamAndScore().get(k).getText().contains(firstScore) && getTeamAndScore().get(k).getText().contains(secondScore))) && (getListOfTwoTeams().get(j).getText().contains(firstTeam) && getListOfTwoTeams().get(j).getText().contains(secondTeam)) && (getListOfMonthsAndYears().get(i).getText().replaceAll("\\s+", " ").substring(4).contains(monthAndYear))) {
-                            scoresOnTheFixturesPage.add(Integer.parseInt(getScoreLeft().get(k).getText()));
-                            scoresOnTheFixturesPage.add(Integer.parseInt(getScoreRight().get(k).getText()));
+                        if (((getTeamAndScore().get(k).getText().contains(firstScore)
+                                && getTeamAndScore().get(k).getText().contains(secondScore)))
+                                && (getListOfTwoTeams().get(j).getText().contains(firstTeam)
+                                && getListOfTwoTeams().get(j).getText().contains(secondTeam))
+                                && (getListOfMonthsAndYears().get(i).getText().replaceAll("\\s+", " ")
+                                .substring(4).contains(monthAndYear))) {
+                            scoresOnTheFixturesPage.add(scoreLeft.get(k).getText());
+                            scoresOnTheFixturesPage.add(scoreRight.get(k).getText());
                             getListOfTwoTeams().get(j).click();
-                            scoresOnTheTeamPage.add(Integer.parseInt(getLeftScoreOfTeamPage().getText()));
-                            scoresOnTheTeamPage.add(Integer.parseInt(getRightScoreOfTeamPage().getText()));
-                            break;
+                            scoresOnTheTeamPage.add(leftScoreOfTeamPage.getText());
+                            scoresOnTheTeamPage.add(rightScoreOfTeamPage.getText());
+                            break outerLoop;
                         }
                     }
                 }
@@ -109,8 +101,8 @@ public class ScoresAndFixturesPage extends AbstractPage {
         }
         if (scoresOnTheFixturesPage.equals(scoresOnTheTeamPage)) {
             result = true;
-            scoresOnTheFixturesPage.clear();
-            scoresOnTheTeamPage.clear();
+        } else {
+            System.out.println(scoresOnTheFixturesPage + " not equals to " + scoresOnTheTeamPage);
         }
         return result;
     }

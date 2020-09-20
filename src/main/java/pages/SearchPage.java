@@ -12,7 +12,7 @@ public class SearchPage extends AbstractPage {
 
 
     @FindBy(xpath = "//div[@class='css-l100ew-PromoContentSummary ett16tt10']/p/a")
-    private List<WebElement> headlineOfSearchArticle;
+    public List<WebElement> headlineOfSearchArticle;
 
     public SearchPage(WebDriver driver) {
         super(driver);

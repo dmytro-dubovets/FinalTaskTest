@@ -50,8 +50,8 @@ public class VerifiesThatTeamScoresDisplayCorrectly extends CommonConditions {
                 .clickOnScoresAndFixtures()
                 .typeInTheSearchAndPressEnter(SEARCH_CHAMPIONSHIP);
         Assert.assertTrue(new ScoresAndFixturesPage(driver)
-                        .getNthMonthAndClickWhereTeamsArePresented(FIRST_SCORE, SECOND_SCORE, FIRST_TEAM,
-                                SECOND_TEAM, MONTH_YEAR), "The Score is not correct");
+                .getNthMonthAndClickWhereTeamsArePresented(FIRST_SCORE, SECOND_SCORE, FIRST_TEAM,
+                        SECOND_TEAM, MONTH_YEAR));
     }
 
     @Test
@@ -63,7 +63,7 @@ public class VerifiesThatTeamScoresDisplayCorrectly extends CommonConditions {
                 .typeInTheSearchAndPressEnter(SEARCH_CHAMPIONSHIP_SECOND);
         Assert.assertTrue(new ScoresAndFixturesPage(driver)
                 .getNthMonthAndClickWhereTeamsArePresented(FIRST_SCORE_SECOND, SECOND_SCORE_SECOND, FIRST_TEAM_SECOND,
-                        SECOND_TEAM_SECOND, MONTH_YEAR_SECOND), "The Score is not correct");
+                        SECOND_TEAM_SECOND, MONTH_YEAR_SECOND));
     }
 
     @Test
@@ -75,7 +75,7 @@ public class VerifiesThatTeamScoresDisplayCorrectly extends CommonConditions {
                 .typeInTheSearchAndPressEnter(SEARCH_CHAMPIONSHIP_THIRD);
         Assert.assertTrue(new ScoresAndFixturesPage(driver)
                 .getNthMonthAndClickWhereTeamsArePresented(FIRST_SCORE_THIRD, SECOND_SCORE_THIRD, FIRST_TEAM_THIRD,
-                        SECOND_TEAM_THIRD, MONTH_YEAR_THIRD), "The Score is not correct");
+                        SECOND_TEAM_THIRD, MONTH_YEAR_THIRD));
     }
 
     @Test
@@ -87,7 +87,7 @@ public class VerifiesThatTeamScoresDisplayCorrectly extends CommonConditions {
                 .typeInTheSearchAndPressEnter(SEARCH_CHAMPIONSHIP_FOURTH);
         Assert.assertTrue(new ScoresAndFixturesPage(driver)
                 .getNthMonthAndClickWhereTeamsArePresented(FIRST_SCORE_FOURTH, SECOND_SCORE_FOURTH, FIRST_TEAM_FOURTH,
-                        SECOND_TEAM_FOURTH, MONTH_YEAR_FOURTH), "The Score is not correct");
+                        SECOND_TEAM_FOURTH, MONTH_YEAR_FOURTH));
     }
 
     @Test
@@ -99,6 +99,6 @@ public class VerifiesThatTeamScoresDisplayCorrectly extends CommonConditions {
                 .typeInTheSearchAndPressEnter(SEARCH_CHAMPIONSHIP_FIFTH);
         Assert.assertTrue(new ScoresAndFixturesPage(driver)
                 .getNthMonthAndClickWhereTeamsArePresented(FIRST_SCORE_FIFTH, SECOND_SCORE_FIFTH, FIRST_TEAM_FIFTH,
-                        SECOND_TEAM_FIFTH, MONTH_YEAR_FIFTH), "The Score is not correct");
+                        SECOND_TEAM_FIFTH, MONTH_YEAR_FIFTH));
     }
 }
