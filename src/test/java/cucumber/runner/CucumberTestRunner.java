@@ -5,9 +5,9 @@ import io.cucumber.testng.CucumberOptions;
 
 
 @CucumberOptions(
-        plugin = {"pretty", "html:target/HTMLReports"},
+        plugin = {"pretty", "html:target/HTMLReports/index.html"},
         monochrome = true,
-        //tags = "@smoke",
+        tags = "@finalTask",
         glue = "cucumber",
         features = "src/test/resources/features"
         )

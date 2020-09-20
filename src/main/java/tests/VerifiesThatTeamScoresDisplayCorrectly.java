@@ -51,8 +51,8 @@ public class VerifiesThatTeamScoresDisplayCorrectly extends DriverFactory {
                 .clickOnScoresAndFixtures()
                 .typeInTheSearchAndPressEnter(SEARCH_CHAMPIONSHIP);
         Assert.assertTrue(new ScoresAndFixturesPage(driver)
-                        .getNthMonthAndClickWhereTeamsArePresented(FIRST_SCORE, SECOND_SCORE, FIRST_TEAM,
-                                SECOND_TEAM, MONTH_YEAR), "The Score is not correct");
+                .getNthMonthAndClickWhereTeamsArePresented(FIRST_SCORE, SECOND_SCORE, FIRST_TEAM,
+                        SECOND_TEAM, MONTH_YEAR), "The Score is not correct");
     }
 
     @Test

@@ -18,15 +18,13 @@ import java.util.List;
 
 public class StepsDefinition {
 
+    private final String titleOfHowToShare = "How to share your questions, stories, pictures and videos with BBC News - BBC News";
     List<String> actualSecondaryArticleTitles;
     String expectedArticle;
     String actualTab;
     String expectedHeadlineFirstArticle;
     boolean errorMessages;
     boolean title;
-    private final String titleOfHowToShare = "How to share your questions, stories, pictures and videos with BBC News - BBC News";
-
-
     DriverFactory driverFactory = new DriverFactory();
     WebDriver driver = driverFactory.getDriver();
     HomePage homePage = new HomePage(driver);
@@ -35,6 +33,9 @@ public class StepsDefinition {
     CoronaVirusPage coronaVirusPage = new CoronaVirusPage(driver);
     HowToShareYourStoriesPage howToShareYourStoriesPage = new HowToShareYourStoriesPage(driver);
     CoronaVirusStoriesPage coronaVirusStoriesPage = new CoronaVirusStoriesPage(driver);
+    SportPage sportPage = new SportPage(driver);
+    FootballPage footballPage = new FootballPage(driver);
+    ScoresAndFixturesPage scoresAndFixturesPage = new ScoresAndFixturesPage(driver);
 
     @Before
     public void setUpDriver() {
@@ -180,5 +181,34 @@ public class StepsDefinition {
     @Then("User enter some {string} in the Story field")
     public void user_enter_some_in_the_story_field(String string) {
         howToShareYourStoriesPage.sendStory("Some story is entering ...");
+    }
+
+    // Steps for Scenario: The team scores should be displayed correctly
+
+    @When("User clicks on Sport page")
+    public void user_clicks_on_sport_page() {
+        homePage.clickOnSport();
+    }
+
+    @Then("User clicks on Football page")
+    public void user_clicks_on_football_page() {
+        sportPage.clickOnFootball();
+    }
+
+    @And("User clicks on scores and fixtures")
+    public void user_clicks_on_scores_and_fixtures() {
+        footballPage.clickOnScoresAndFixtures();
+    }
+
+    @Then("^User type in the search the name of (.*)$")
+    public void user_type_in_the_search_the_name_of_championship(String championship) {
+        scoresAndFixturesPage.typeInTheSearchAndPressEnter(championship);
+    }
+
+    @Then("^Check that scores is displayed correctly with typing: (.*), (.*), (.*), (.*), (.*)$")
+    public void check_that_scores_is_displayed_correctly(String first_score, String second_score, String first_team, String second_team, String month_and_year) {
+        Assert.assertTrue(scoresAndFixturesPage
+                .getNthMonthAndClickWhereTeamsArePresented(first_score, second_score, first_team,
+                        second_team, month_and_year), "The Score is not correct");
     }
 }
