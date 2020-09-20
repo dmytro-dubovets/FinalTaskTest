@@ -58,7 +58,7 @@ Feature: As a trainer I want to see your successful project so that improve your
     Then User clicks on Your Coronavirus Stories
     And User clicks on How to share with BBC news
     Then User fill some "name" in the field Name
-    And User check all required checkboxes
+    And User checks all required checkboxes
     When User clicks on Submit button
     And Get the errors
     Then User assert that errors are displayed
@@ -73,7 +73,7 @@ Feature: As a trainer I want to see your successful project so that improve your
     Then User clicks on Your Coronavirus Stories
     And User clicks on How to share with BBC news
     Then User enter some "story" in the Story field
-    And User check all required checkboxes
+    And User checks all required checkboxes
     When User clicks on Submit button
     And Get the errors
     Then User assert that errors are displayed

@@ -170,8 +170,8 @@ public class StepsDefinition {
         howToShareYourStoriesPage.sendName("Joy");
     }
 
-    @And("User check all required checkboxes")
-    public void user_check_all_required_checkboxes() {
+    @And("User checks all required checkboxes")
+    public void user_checks_all_required_checkboxes() {
         howToShareYourStoriesPage.clickOnAllCheckBoxes();
     }
 
@@ -209,6 +209,6 @@ public class StepsDefinition {
     public void check_that_scores_is_displayed_correctly(String first_score, String second_score, String first_team, String second_team, String month_and_year) {
         Assert.assertTrue(scoresAndFixturesPage
                 .getNthMonthAndClickWhereTeamsArePresented(first_score, second_score, first_team,
-                        second_team, month_and_year), "The Score is not correct");
+                        second_team, month_and_year));
     }
 }

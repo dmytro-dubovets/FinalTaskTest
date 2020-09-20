@@ -24,22 +24,22 @@ public class CoronaVirusStoriesPage extends AbstractPage {
 
     public HowToShareYourStoriesPage clickOnHowToShareYourStories() {
         getHowToShareYourStories().click();
-        waitForPageLoadComplete(15);
+        waitForPageLoadComplete(20);
         return new HowToShareYourStoriesPage(driver);
     }
 
     private WebElement getHowToShareYourStories() {
-        List<WebElement> howToShare = new ArrayList<>();
+        List<WebElement> howToShareYourStories = new ArrayList<>();
         try {
             for (WebElement link : getLinksLifeInLockDown()) {
                 if (link.getText().equals("How to share with BBC News")) {
-                    howToShare.add(link);
+                    howToShareYourStories.add(link);
                     break;
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return howToShare.get(0);
+        return howToShareYourStories.get(0);
     }
 }
