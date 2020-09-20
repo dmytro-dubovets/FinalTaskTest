@@ -77,6 +77,7 @@ public class ScoresAndFixturesPage extends AbstractPage {
         List<Integer> scoresOnTheFixturesPage = new ArrayList<>();
         List<Integer> scoresOnTheTeamPage = new ArrayList<>();
         boolean result = false;
+        outerLoop:
         for (int i = 0; i < getListOfMonthsAndYears().size(); i++) {
             if (scoreContent.isDisplayed()) {
                 getListOfMonthsAndYears().get(i).click();
@@ -96,7 +97,7 @@ public class ScoresAndFixturesPage extends AbstractPage {
                             getListOfTwoTeams().get(j).click();
                             scoresOnTheTeamPage.add(Integer.parseInt(getLeftScoreOfTeamPage().getText()));
                             scoresOnTheTeamPage.add(Integer.parseInt(getRightScoreOfTeamPage().getText()));
-                            break;
+                            break outerLoop;
                         }
                     }
                 }
