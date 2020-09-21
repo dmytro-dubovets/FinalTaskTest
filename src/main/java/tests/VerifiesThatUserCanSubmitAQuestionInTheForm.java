@@ -1,86 +1,79 @@
 package tests;
 
 import driver.DriverFactory;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.HowToShareYourStoriesPage;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class VerifiesThatUserCanSubmitAQuestionInTheForm extends DriverFactory {
-    private final String titleOfHowToShare = "How to share your questions, stories, pictures and videos with BBC News - BBC News";
+    private final String titleOfHowToShareStories = "How to share your questions, stories, pictures and videos with BBC News - BBC News";
 
     @Test
     public void verifiesThatUserCanNotSubmitAQuestion() {
-        new HomePage(driver)
+        String actualTitle = new HomePage(driver)
                 .clickOnNews()
                 .clickOnTheCoronaVirusTab()
                 .clickOnGetStories()
                 .clickOnHowToShareYourStories()
-                .clickOnSubmitButton();
+                .clickOnSubmitButton()
+                .getTitle();
+        assertThat(actualTitle).isEqualTo(titleOfHowToShareStories);
         boolean errorMessages = new HowToShareYourStoriesPage(driver)
                 .ifErrorsMessagesAreDisplayed();
-        Assert.assertTrue(errorMessages, "The error messages like: " + new HowToShareYourStoriesPage(driver)
-                .errorMessages() + " are not displayed");
-        boolean title = new HomePage(driver)
-                .isTitleEquals(titleOfHowToShare);
-        Assert.assertTrue(title, "The actual title is not equal to the expected title " + titleOfHowToShare);
+        assertThat(errorMessages).isTrue();
     }
 
     @Test
     public void verifiesThatUserCanNotSubmitWithOneReqCheckBoxOver16() {
-        new HomePage(driver)
+        String actualTitle = new HomePage(driver)
                 .clickOnNews()
                 .clickOnTheCoronaVirusTab()
                 .clickOnGetStories()
                 .clickOnHowToShareYourStories()
                 .clickOnCheckBoxOver16()
-                .clickOnSubmitButton();
+                .clickOnSubmitButton()
+                .getTitle();
+        assertThat(actualTitle).isEqualTo(titleOfHowToShareStories);
         boolean errorMessages = new HowToShareYourStoriesPage(driver)
                 .ifErrorsMessagesAreDisplayed();
-        Assert.assertTrue(errorMessages, "The error messages like: " + new HowToShareYourStoriesPage(driver)
-                .errorMessages() + " are not displayed");
-        boolean title = new HomePage(driver)
-                .isTitleEquals(titleOfHowToShare);
-        Assert.assertTrue(title, "The actual title is not equal to the expected title " + titleOfHowToShare);
+        assertThat(errorMessages).isTrue();
     }
 
-    @Test(enabled = false)
+    @Test
     public void verifiesThatUserCanNotSubmitWithAllReqCheckBoxesAndNonEmptyName() {
-        String INPUT_NAME = "  123";
-        new HomePage(driver)
+        String INPUT_NAME = "Type some name";
+        String actualTitle = new HomePage(driver)
                 .clickOnNews()
                 .clickOnTheCoronaVirusTab()
                 .clickOnGetStories()
                 .clickOnHowToShareYourStories()
                 .sendName(INPUT_NAME)
                 .clickOnAllCheckBoxes()
-                .clickOnSubmitButton();
+                .clickOnSubmitButton()
+                .getTitle();
+        assertThat(actualTitle).isEqualTo(titleOfHowToShareStories);
         boolean errorMessages = new HowToShareYourStoriesPage(driver)
                 .ifErrorsMessagesAreDisplayed();
-        Assert.assertTrue(errorMessages, "The error messages like: " + new HowToShareYourStoriesPage(driver)
-                .errorMessages() + " are not displayed");
-        boolean title = new HomePage(driver)
-                .isTitleEquals(titleOfHowToShare);
-        Assert.assertTrue(title, "The actual title is not equal to the expected title " + titleOfHowToShare);
+        assertThat(errorMessages).isTrue();
     }
 
-    @Test(enabled = false)
+    @Test
     public void verifiesThatUserCanNotSubmitWithAllReqCheckBoxesAndEmptyNameButNonEmptyStory() {
-        String INPUT_STORY = "  gkrgkerger";
-        new HomePage(driver)
+        String INPUT_STORY = "* type some story... *";
+        String actualTitle = new HomePage(driver)
                 .clickOnNews()
                 .clickOnTheCoronaVirusTab()
                 .clickOnGetStories()
                 .clickOnHowToShareYourStories()
                 .sendStory(INPUT_STORY)
                 .clickOnAllCheckBoxes()
-                .clickOnSubmitButton();
+                .clickOnSubmitButton()
+                .getTitle();
+        assertThat(actualTitle).isEqualTo(titleOfHowToShareStories);
         boolean errorMessages = new HowToShareYourStoriesPage(driver)
                 .ifErrorsMessagesAreDisplayed();
-        Assert.assertTrue(errorMessages, "The error messages like: " + new HowToShareYourStoriesPage(driver)
-                .errorMessages() + " are not displayed");
-        boolean title = new HomePage(driver)
-                .isTitleEquals(titleOfHowToShare);
-        Assert.assertTrue(title, "The actual title is not equal to the expected title " + titleOfHowToShare);
+        assertThat(errorMessages).isTrue();
     }
 }

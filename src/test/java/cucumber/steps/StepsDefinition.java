@@ -8,23 +8,26 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import pages.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class StepsDefinition {
 
-    private final String titleOfHowToShare = "How to share your questions, stories, pictures and videos with BBC News - BBC News";
+    String titleOfHowToShareStories = "How to share your questions, stories, pictures and videos with BBC News - BBC News";
     List<String> actualSecondaryArticleTitles;
+    List<String> expectedScoreOnTheTeamPage;
     String expectedArticle;
     String actualTab;
     String expectedHeadlineFirstArticle;
+    String actualTitle;
     boolean errorMessages;
-    boolean title;
+
     DriverFactory driverFactory = new DriverFactory();
     WebDriver driver = driverFactory.getDriver();
     HomePage homePage = new HomePage(driver);
@@ -65,8 +68,8 @@ public class StepsDefinition {
     @Then("User assert with actual article")
     public void user_assert_with_actual_article() {
         String actualArticle = "BBC News";
-        Assert.assertEquals(expectedArticle, actualArticle, "The expected article " + expectedArticle +
-                " is not equal to the actual article " + actualArticle + "\n");
+        assertThat(actualArticle).isEqualTo(expectedArticle);
+
     }
 
     // Steps for Scenario: Check secondary article titles
@@ -83,10 +86,7 @@ public class StepsDefinition {
                 "Home", "US Election", "Coronavirus", "Video", "World",
                 "UK", "Business", "Tech", "Science", "Stories", "Entertainment & Arts",
                 "Health", "World News TV", "In Pictures"));
-        Assert.assertEquals(listOfExpectedArticleTitles, actualSecondaryArticleTitles,
-                "The expected secondary article titles " + listOfExpectedArticleTitles +
-                        " are not equal to the actual secondary article titles " +
-                        actualSecondaryArticleTitles + "\n");
+        assertThat(actualSecondaryArticleTitles).isEqualTo(listOfExpectedArticleTitles);
     }
 
     // Steps for Scenario: Check the category link of the first headline article
@@ -108,8 +108,7 @@ public class StepsDefinition {
 
     @Then("Assert that headline of the first article contains text of the chosen tab")
     public void assert_that_headline_of_the_first_article_contains_text_of_the_chosen_tab() {
-        Assert.assertTrue(expectedHeadlineFirstArticle.contains(actualTab), "The first headline article " +
-                expectedHeadlineFirstArticle + " doesn't contain actual article " + actualTab + "\n");
+        assertThat(expectedHeadlineFirstArticle).contains(actualTab);
     }
 
     // Steps for Scenario: Verifies that user can not submit a question in the form
@@ -134,6 +133,16 @@ public class StepsDefinition {
         howToShareYourStoriesPage.clickOnSubmitButton();
     }
 
+    @And("Get the title of actual page")
+    public void get_the_title_of_actual_page() {
+        actualTitle = homePage.getTitle();
+    }
+
+    @Then("User assert the actual and expected titles of the displayed page")
+    public void user_assert_the_actual_and_expected_titles_of_the_displayed_page() {
+        assertThat(actualTitle).isEqualTo(titleOfHowToShareStories);
+    }
+
     @And("Get the errors")
     public void get_the_errors() {
         errorMessages = howToShareYourStoriesPage.ifErrorsMessagesAreDisplayed();
@@ -141,19 +150,9 @@ public class StepsDefinition {
 
     @Then("User assert that errors are displayed")
     public void user_assert_that_errors_are_displayed() {
-        Assert.assertTrue(errorMessages, "The error messages like: " + howToShareYourStoriesPage
-                .errorMessages() + " are not displayed");
+        assertThat(errorMessages).isTrue();
     }
 
-    @And("Get the title of actual page")
-    public void get_the_title_of_actual_page() {
-        title = homePage.isTitleEquals(titleOfHowToShare);
-    }
-
-    @Then("User assert the actual and expected titles of the displayed page")
-    public void user_assert_the_actual_and_expected_titles_of_the_displayed_page() {
-        Assert.assertTrue(title, "The actual title is not equal to the expected title " + titleOfHowToShare);
-    }
 
     // Steps for Scenario: Verifies that user can not submit with one checked required checkbox I am over 16 years old
 
@@ -163,24 +162,16 @@ public class StepsDefinition {
     }
 
     // Steps for Scenario: Verifies that user can not submit with all checked
-    // required checkboxes and with not empty name
+    // required checkboxes and with not empty story or name
 
-    @Then("User fill some {string} in the field Name")
-    public void user_fill_some_in_the_field_name(String name) {
-        howToShareYourStoriesPage.sendName("Joy");
+    @Then("^User fill some (.*) or (.*) in the fields$")
+    public void user_fill_some_story_or_name_in_the_field_name(String story, String name) {
+        howToShareYourStoriesPage.sendNameOrStory(story,name);
     }
 
     @And("User checks all required checkboxes")
     public void user_checks_all_required_checkboxes() {
         howToShareYourStoriesPage.clickOnAllCheckBoxes();
-    }
-
-    // Steps for Scenario: Scenario: Verifies that user can not submit with all required checkboxes
-    // and empty Name field but not empty Story field
-
-    @Then("User enter some {string} in the Story field")
-    public void user_enter_some_in_the_story_field(String string) {
-        howToShareYourStoriesPage.sendStory("Some story is entering ...");
     }
 
     // Steps for Scenario: The team scores should be displayed correctly
@@ -205,10 +196,16 @@ public class StepsDefinition {
         scoresAndFixturesPage.typeInTheSearchAndPressEnter(championship);
     }
 
-    @Then("^Check that scores is displayed correctly with typing: (.*), (.*), (.*), (.*), (.*)$")
-    public void check_that_scores_is_displayed_correctly(String first_score, String second_score, String first_team, String second_team, String month_and_year) {
-        Assert.assertTrue(scoresAndFixturesPage
-                .getNthMonthAndClickWhereTeamsArePresented(first_score, second_score, first_team,
-                        second_team, month_and_year));
+    @And("^Get scores on the Team page (.*), (.*), (.*), (.*), (.*)$")
+    public void get_scores_on_the_team_page(String first_score, String second_score, String first_team,
+                                            String second_team, String month_and_year) {
+        expectedScoreOnTheTeamPage = scoresAndFixturesPage.getScoresOnTheTeamPage(first_score,second_score,first_team,
+                second_team,month_and_year);
+    }
+
+    @Then("^Assert that (.*) and (.*) are equals scores on the Team page$")
+    public void assert_that_first_score_and_second_score_are_equals_on_the_team_page(String first_score,
+                                                                                     String second_score) {
+        assertThat(expectedScoreOnTheTeamPage).containsSequence(first_score, second_score);
     }
 }

@@ -31,10 +31,10 @@ Feature: As a trainer I want to see your successful project so that improve your
     Then User clicks on Your Coronavirus Stories
     And User clicks on How to share with BBC news
     When User clicks on Submit button
-    And Get the errors
-    Then User assert that errors are displayed
     And Get the title of actual page
     Then User assert the actual and expected titles of the displayed page
+    And Get the errors
+    Then User assert that errors are displayed
 
   @finalTask
   Scenario: Verifies that user can not submit with one checked required checkbox I am over 16 years old
@@ -45,40 +45,29 @@ Feature: As a trainer I want to see your successful project so that improve your
     And User clicks on How to share with BBC news
     Then User check required checkbox I am over 16 years old
     When User clicks on Submit button
-    And Get the errors
-    Then User assert that errors are displayed
     And Get the title of actual page
     Then User assert the actual and expected titles of the displayed page
+    And Get the errors
+    Then User assert that errors are displayed
 
   @finalTask
-  Scenario: Verifies that user can not submit with all checked required checkboxes and with not empty name
+  Scenario Outline: Verifies that user can`t submit with all checked required checkboxes and with not empty story or name
     Given User opens website
     When User clicks on news
     And User clicks on Coronavirus tab
     Then User clicks on Your Coronavirus Stories
     And User clicks on How to share with BBC news
-    Then User fill some "name" in the field Name
+    Then User fill some <story> or <name> in the fields
     And User checks all required checkboxes
     When User clicks on Submit button
-    And Get the errors
-    Then User assert that errors are displayed
     And Get the title of actual page
     Then User assert the actual and expected titles of the displayed page
-
-  @finalTask
-  Scenario: Verifies that user can not submit with all required checkboxes and empty Name field but not empty Story field
-    Given User opens website
-    When User clicks on news
-    And User clicks on Coronavirus tab
-    Then User clicks on Your Coronavirus Stories
-    And User clicks on How to share with BBC news
-    Then User enter some "story" in the Story field
-    And User checks all required checkboxes
-    When User clicks on Submit button
     And Get the errors
     Then User assert that errors are displayed
-    And Get the title of actual page
-    Then User assert the actual and expected titles of the displayed page
+    Examples:
+      | story           | name           |
+      | type some story |                |
+      |                 | type some name |
 
   @finalTask
   Scenario Outline: The team scores should be displayed correctly
@@ -87,11 +76,12 @@ Feature: As a trainer I want to see your successful project so that improve your
     Then User clicks on Football page
     And User clicks on scores and fixtures
     Then User type in the search the name of <championship>
-    And Check that scores is displayed correctly with typing: <first score>, <second score>, <first team>, <second team>, <month and year>
+    And Get scores on the Team page <first score>, <second score>, <first team>, <second team>, <month and year>
+    Then Assert that <first score> and <second score> are equals scores on the Team page
 
     Examples:
       | championship          | first score | second score | first team   | second team       | month and year |
-      | Scottish Championship | 5           | 1            | Dunfermline  | Partick Thistle   | 2019 November  |
+    #  | Scottish Championship | 5           | 1            | Dunfermline  | Partick Thistle   | 2019 November  |
       | National League       | 2           | 0            | Notts County | Barnet            | 2020 July      |
       | Europa League         | 0           | 5            | LASK         | Manchester United | 2020 March     |
       | Premier League        | 0           | 2            | Burnley      | Crystal Palace    | 2019 November  |

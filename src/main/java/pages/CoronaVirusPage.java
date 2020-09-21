@@ -18,7 +18,7 @@ public class CoronaVirusPage extends AbstractPage {
 
     public CoronaVirusPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(this.driver, this);
+        //PageFactory.initElements(this.driver, this);
     }
 
     public CoronaVirusStoriesPage clickOnGetStories() {

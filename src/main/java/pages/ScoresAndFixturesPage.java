@@ -4,7 +4,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,21 +19,11 @@ public class ScoresAndFixturesPage extends AbstractPage {
     @FindBy(xpath = "//li/a[@class='sp-c-date-picker-timeline__item-inner']")
     public List<WebElement> listOfMonthsAndYears;
 
-    @FindBy(xpath = "//span[contains(@class,'sp-c-fixture__number--home')]")
-    public List<WebElement> scoreLeft;
-
-    @FindBy(xpath = "//span[contains(@class,'sp-c-fixture__number--away')]")
-    public List<WebElement> scoreRight;
-
     @FindBy(xpath = "//div[@class='sp-c-fixture__wrapper']")
     public List<WebElement> teamAndScore;
 
     @FindBy(xpath = "//li[@class='gs-o-list-ui__item gs-u-pb-']")
     public List<WebElement> listOfTwoTeams;
-
-    public WebElement getScoreContent() {
-        return scoreContent;
-    }
 
     @FindBy(xpath = "//div[@class='gel-wrap']//div[@class='gel-layout gel-layout--center']")
     public WebElement scoreContent;
@@ -47,7 +36,10 @@ public class ScoresAndFixturesPage extends AbstractPage {
 
     public ScoresAndFixturesPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(this.driver, this);
+    }
+
+    public WebElement getScoreContent() {
+        return scoreContent;
     }
 
     public List<WebElement> getTeamAndScore() {
@@ -71,11 +63,11 @@ public class ScoresAndFixturesPage extends AbstractPage {
         return listOfMonthsAndYears;
     }
 
-    public boolean getNthMonthAndClickWhereTeamsArePresented(String firstScore, String secondScore, String firstTeam,
-                                                             String secondTeam, String monthAndYear) {
+
+    public List<String> getScoresOnTheTeamPage(String firstScore, String secondScore, String firstTeam,
+                                               String secondTeam, String monthAndYear) {
         scoresOnTheFixturesPage = new ArrayList<>();
         scoresOnTheTeamPage = new ArrayList<>();
-        boolean result = false;
         outerLoop:
         for (int i = 0; i < getListOfMonthsAndYears().size(); i++) {
             if (getScoreContent().isDisplayed()) {
@@ -91,8 +83,6 @@ public class ScoresAndFixturesPage extends AbstractPage {
                                 && getListOfTwoTeams().get(j).getText().contains(secondTeam))
                                 && (getListOfMonthsAndYears().get(i).getText().replaceAll("\\s+", " ")
                                 .substring(4).contains(monthAndYear))) {
-                            scoresOnTheFixturesPage.add(scoreLeft.get(k).getText());
-                            scoresOnTheFixturesPage.add(scoreRight.get(k).getText());
                             getListOfTwoTeams().get(j).click();
                             scoresOnTheTeamPage.add(leftScoreOfTeamPage.getText());
                             scoresOnTheTeamPage.add(rightScoreOfTeamPage.getText());
@@ -103,11 +93,6 @@ public class ScoresAndFixturesPage extends AbstractPage {
                 }
             }
         }
-        if (scoresOnTheFixturesPage.equals(scoresOnTheTeamPage)) {
-            result = true;
-        } else {
-            System.out.println(scoresOnTheFixturesPage + " not equals to " + scoresOnTheTeamPage);
-        }
-        return result;
+        return scoresOnTheTeamPage;
     }
 }

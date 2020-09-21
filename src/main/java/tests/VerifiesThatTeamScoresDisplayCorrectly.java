@@ -1,105 +1,107 @@
 package tests;
 
 import driver.DriverFactory;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import pages.ScoresAndFixturesPage;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class VerifiesThatTeamScoresDisplayCorrectly extends DriverFactory {
-    protected String SEARCH_CHAMPIONSHIP = "Scottish Championship";
-    protected String FIRST_TEAM = "Dunfermline";
-    protected String SECOND_TEAM = "Partick Thistle";
-    protected String FIRST_SCORE = "5";
-    protected String SECOND_SCORE = "1";
-    protected String MONTH_YEAR = "2019 November";
+    String championshipTeam_1 = "Scottish Championship";
+    String firstTeam_1 = "Dunfermline";
+    String secondTeam_1 = "Partick Thistle";
+    String firstScoreTeam_1 = "5";
+    String secondScoreTeam_1 = "1";
+    String monthAndYearTeam_1 = "2019 November";
 
-    protected String SEARCH_CHAMPIONSHIP_SECOND = "National League";
-    protected String FIRST_TEAM_SECOND = "Notts County";
-    protected String SECOND_TEAM_SECOND = "Barnet";
-    protected String FIRST_SCORE_SECOND = "2";
-    protected String SECOND_SCORE_SECOND = "0";
-    protected String MONTH_YEAR_SECOND = "2020 July";
+    String championshipTeam_2 = "National League";
+    String firstTeam_2 = "Notts County";
+    String secondTeam_2 = "Barnet";
+    String firstScoreTeam_2 = "2";
+    String secondScoreTeam_2 = "0";
+    String monthAndYearTeam_2 = "2020 July";
 
-    protected String SEARCH_CHAMPIONSHIP_THIRD = "Europa League";
-    protected String FIRST_TEAM_THIRD = "LASK";
-    protected String SECOND_TEAM_THIRD = "Manchester United";
-    protected String FIRST_SCORE_THIRD = "0";
-    protected String SECOND_SCORE_THIRD = "5";
-    protected String MONTH_YEAR_THIRD = "2020 March";
+    String championshipTeam_3 = "Europa League";
+    String firstTeam_3 = "LASK";
+    String secondTeam_3 = "Manchester United";
+    String firstScoreTeam_3 = "0";
+    String secondScoreTeam_3 = "5";
+    String monthAndYearTeam_3 = "2020 March";
 
-    protected String SEARCH_CHAMPIONSHIP_FOURTH = "Premier League";
-    protected String FIRST_TEAM_FOURTH = "Burnley";
-    protected String SECOND_TEAM_FOURTH = "Crystal Palace";
-    protected String FIRST_SCORE_FOURTH = "0";
-    protected String SECOND_SCORE_FOURTH = "2";
-    protected String MONTH_YEAR_FOURTH = "2019 November";
+    String championshipTeam_4 = "Premier League";
+    String firstTeam_4 = "Burnley";
+    String secondTeam_4 = "Crystal Palace";
+    String firstScoreTeam_4 = "0";
+    String secondScoreTeam_4 = "2";
+    String monthAndYearTeam_4 = "2019 November";
 
-    protected String SEARCH_CHAMPIONSHIP_FIFTH = "England Football Team";
-    protected String FIRST_TEAM_FIFTH = "Kosovo";
-    protected String SECOND_TEAM_FIFTH = "England";
-    protected String FIRST_SCORE_FIFTH = "0";
-    protected String SECOND_SCORE_FIFTH = "4";
-    protected String MONTH_YEAR_FIFTH = "2019 November";
+    String championshipTeam_5 = "England Football Team";
+    String firstTeam_5 = "Kosovo";
+    String secondTeam_5 = "England";
+    String firstScoreTeam_5 = "0";
+    String secondScoreTeam_5 = "4";
+    String monthAndYearTeam_5 = "2019 November";
 
 
     @Test
     public void checkThatTeamsScores() {
-        new HomePage(driver)
+        List<String> expectedScoreOnTheTeamPage = new HomePage(driver)
                 .clickOnSport()
                 .clickOnFootball()
                 .clickOnScoresAndFixtures()
-                .typeInTheSearchAndPressEnter(SEARCH_CHAMPIONSHIP);
-        Assert.assertTrue(new ScoresAndFixturesPage(driver)
-                .getNthMonthAndClickWhereTeamsArePresented(FIRST_SCORE, SECOND_SCORE, FIRST_TEAM,
-                        SECOND_TEAM, MONTH_YEAR));
+                .typeInTheSearchAndPressEnter(championshipTeam_1)
+                .getScoresOnTheTeamPage(firstScoreTeam_1, secondScoreTeam_1, firstTeam_1,
+                        secondTeam_1, monthAndYearTeam_1);
+        assertThat(expectedScoreOnTheTeamPage).containsSequence(firstScoreTeam_1, secondScoreTeam_1);
     }
 
     @Test
     public void checkThatTeamsScoresSecondChampionShip() {
-        new HomePage(driver)
+        List<String> expectedScoreOnTheTeamPage = new HomePage(driver)
                 .clickOnSport()
                 .clickOnFootball()
                 .clickOnScoresAndFixtures()
-                .typeInTheSearchAndPressEnter(SEARCH_CHAMPIONSHIP_SECOND);
-        Assert.assertTrue(new ScoresAndFixturesPage(driver)
-                .getNthMonthAndClickWhereTeamsArePresented(FIRST_SCORE_SECOND, SECOND_SCORE_SECOND, FIRST_TEAM_SECOND,
-                        SECOND_TEAM_SECOND, MONTH_YEAR_SECOND));
+                .typeInTheSearchAndPressEnter(championshipTeam_2)
+                .getScoresOnTheTeamPage(firstScoreTeam_2, secondScoreTeam_2, firstTeam_2,
+                        secondTeam_2, monthAndYearTeam_2);
+        assertThat(expectedScoreOnTheTeamPage).containsSequence(firstScoreTeam_2, secondScoreTeam_2);
     }
 
     @Test
     public void checkThatTeamsScoresThirdChampionShip() {
-        new HomePage(driver)
+        List<String> expectedScoreOnTheTeamPage = new HomePage(driver)
                 .clickOnSport()
                 .clickOnFootball()
                 .clickOnScoresAndFixtures()
-                .typeInTheSearchAndPressEnter(SEARCH_CHAMPIONSHIP_THIRD);
-        Assert.assertTrue(new ScoresAndFixturesPage(driver)
-                .getNthMonthAndClickWhereTeamsArePresented(FIRST_SCORE_THIRD, SECOND_SCORE_THIRD, FIRST_TEAM_THIRD,
-                        SECOND_TEAM_THIRD, MONTH_YEAR_THIRD));
+                .typeInTheSearchAndPressEnter(championshipTeam_3)
+                .getScoresOnTheTeamPage(firstScoreTeam_3, secondScoreTeam_3, firstTeam_3,
+                        secondTeam_3, monthAndYearTeam_3);
+        assertThat(expectedScoreOnTheTeamPage).containsSequence(firstScoreTeam_3, secondScoreTeam_3);
     }
 
     @Test
     public void checkThatTeamsScoresFourthChampionShip() {
-        new HomePage(driver)
+        List<String> expectedScoreOnTheTeamPage = new HomePage(driver)
                 .clickOnSport()
                 .clickOnFootball()
                 .clickOnScoresAndFixtures()
-                .typeInTheSearchAndPressEnter(SEARCH_CHAMPIONSHIP_FOURTH);
-        Assert.assertTrue(new ScoresAndFixturesPage(driver)
-                .getNthMonthAndClickWhereTeamsArePresented(FIRST_SCORE_FOURTH, SECOND_SCORE_FOURTH, FIRST_TEAM_FOURTH,
-                        SECOND_TEAM_FOURTH, MONTH_YEAR_FOURTH));
+                .typeInTheSearchAndPressEnter(championshipTeam_4)
+                .getScoresOnTheTeamPage(firstScoreTeam_4, secondScoreTeam_4, firstTeam_4,
+                        secondTeam_4, monthAndYearTeam_4);
+        assertThat(expectedScoreOnTheTeamPage).containsSequence(firstScoreTeam_4, secondScoreTeam_4);
     }
 
     @Test
     public void checkThatTeamsScoresFifthChampionShip() {
-        new HomePage(driver)
+        List<String> expectedScoreOnTheTeamPage = new HomePage(driver)
                 .clickOnSport()
                 .clickOnFootball()
                 .clickOnScoresAndFixtures()
-                .typeInTheSearchAndPressEnter(SEARCH_CHAMPIONSHIP_FIFTH);
-        Assert.assertTrue(new ScoresAndFixturesPage(driver)
-                .getNthMonthAndClickWhereTeamsArePresented(FIRST_SCORE_FIFTH, SECOND_SCORE_FIFTH, FIRST_TEAM_FIFTH,
-                        SECOND_TEAM_FIFTH, MONTH_YEAR_FIFTH));
+                .typeInTheSearchAndPressEnter(championshipTeam_5)
+                .getScoresOnTheTeamPage(firstScoreTeam_5, secondScoreTeam_5, firstTeam_5,
+                        secondTeam_5, monthAndYearTeam_5);
+        assertThat(expectedScoreOnTheTeamPage).containsSequence(firstScoreTeam_5, secondScoreTeam_5);
     }
 }

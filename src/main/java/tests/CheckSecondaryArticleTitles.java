@@ -1,7 +1,6 @@
 package tests;
 
 import driver.DriverFactory;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
 
@@ -10,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CheckSecondaryArticleTitles extends DriverFactory {
     private final List<String> listOfExpectedArticleTitles = new ArrayList<>(Arrays.asList(
@@ -22,9 +22,6 @@ public class CheckSecondaryArticleTitles extends DriverFactory {
         List<String> actualSecondaryArticleTitles = new HomePage(driver)
                 .clickOnNews()
                 .stringArrayListOfActualSecondaryArticleTitles();
-        Assert.assertEquals(listOfExpectedArticleTitles, actualSecondaryArticleTitles,
-                "The expected secondary article titles " + listOfExpectedArticleTitles +
-                        " are not equal to the actual secondary article titles " +
-                        actualSecondaryArticleTitles + "\n");
+        assertThat(actualSecondaryArticleTitles).isEqualTo(listOfExpectedArticleTitles);
     }
 }

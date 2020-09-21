@@ -1,11 +1,12 @@
 package tests;
 
 import driver.DriverFactory;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import pages.NewsPage;
 import pages.SearchPage;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class CheckTheCategoryLinkOfTheFirstHeadlineArticle extends DriverFactory {
 
@@ -18,7 +19,6 @@ public class CheckTheCategoryLinkOfTheFirstHeadlineArticle extends DriverFactory
                 .typeSearchWordAndPressEnter(actualTab);
         String expectedHeadlineFirstArticle = new SearchPage(driver)
                 .getFirstListOfHeadlineOfSearchArticles();
-        Assert.assertTrue(expectedHeadlineFirstArticle.contains(actualTab), "The first headline article " +
-                expectedHeadlineFirstArticle + " doesn't contain actual article " + actualTab + "\n");
+        assertThat(expectedHeadlineFirstArticle).contains(actualTab);
     }
 }
