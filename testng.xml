@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite verbose="1" name="FinalTaskTest">
+<suite verbose="1" name="FinalTaskTest" parallel="methods" thread-count="2">
     <test name="Task BBC1.Part1.1 - Check the article">
         <classes>
-           <!-- <class name="tests.CheckTheArticle"/>
+           <!-- <class name="tests.CheckTheMainArticle"/>
             <class name="tests.CheckSecondaryArticleTitles"/>
             <class name="tests.CheckTheCategoryLinkOfTheFirstHeadlineArticle"/>-->
-            <class name="tests.VerifiesThatUserCanSubmitAQuestionInTheForm">
-                <methods>
-                    <include name="verifiesThatUserCanSubmitAQuestion"/>
-                    <include name="verifiesThatUserCanNotSubmitWithOneReqCheckBoxOver16"/>
-                </methods>
-            </class>
+            <class name="tests.VerifiesThatUserCanSubmitAQuestionInTheForm"/>
             <!--<class name="tests.VerifiesThatTeamScoresDisplayCorrectly"/>-->
         </classes>
     </test>

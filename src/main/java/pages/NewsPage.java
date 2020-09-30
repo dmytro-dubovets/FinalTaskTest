@@ -32,7 +32,7 @@ public class NewsPage extends AbstractPage {
         return coronaVirusTab.getText();
     }
 
-    public String getExpectedTextOfTheArticle() {
+    public String getExpectedTextOfTheMainArticle() {
         return expectedArticle.getText();
     }
 

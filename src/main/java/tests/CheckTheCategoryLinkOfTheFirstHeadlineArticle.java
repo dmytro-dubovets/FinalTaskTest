@@ -1,6 +1,5 @@
 package tests;
 
-import driver.DriverFactory;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.SearchPage;
@@ -8,7 +7,7 @@ import pages.SearchPage;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class CheckTheCategoryLinkOfTheFirstHeadlineArticle extends DriverFactory {
+public class CheckTheCategoryLinkOfTheFirstHeadlineArticle extends BasePage {
 
     @Test
     public void checkThatSearchWordIsPresentedInTheFirstArticle() {

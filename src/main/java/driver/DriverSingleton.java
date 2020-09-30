@@ -4,29 +4,17 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 
 import java.util.concurrent.TimeUnit;
 
-public class DriverFactory {
-    private final String URL = "https://www.bbc.com/";
+public class DriverSingleton {
 
-    public WebDriver driver;
+    private static WebDriver driver;
 
-    // We use this code for TestNG tests
-
-    @BeforeClass
-    public void profileSetUp() {
-        getDriver(Browser.CHROME);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.get(URL);
+    private DriverSingleton() {
     }
 
-    // We use this code for Cucumber BDD
-
-    public WebDriver getDriver(Browser browser) {
+    public static WebDriver getDriver(Browser browser) {
         if (null == driver) {
             switch (browser) {
                 case CHROME:
@@ -44,13 +32,12 @@ public class DriverFactory {
         return driver;
     }
 
-    public WebDriver getDriver() {
+    public static WebDriver getDriver() {
         return driver == null ? getDriver(Browser.CHROME) : driver;
     }
 
-    @AfterClass
-    public void tearDown() {
-        if(driver != null) {
+    public static void tearDown() {
+        if (driver != null) {
             driver.quit();
             driver = null;
         }

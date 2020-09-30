@@ -20,10 +20,10 @@ public class CoronaVirusStoriesPage extends AbstractPage {
         return linksLifeInLockDown;
     }
 
-    public HowToShareYourStoriesPage clickOnHowToShareYourStories() {
+    public Form clickOnHowToShareYourStories() {
         getHowToShareYourStories().click();
         waitForPageLoadComplete(20);
-        return new HowToShareYourStoriesPage(driver);
+        return new Form(driver);
     }
 
     private WebElement getHowToShareYourStories() {

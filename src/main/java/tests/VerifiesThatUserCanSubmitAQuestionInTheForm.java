@@ -1,13 +1,12 @@
 package tests;
 
-import driver.DriverFactory;
 import org.testng.annotations.Test;
+import pages.Form;
 import pages.HomePage;
-import pages.HowToShareYourStoriesPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class VerifiesThatUserCanSubmitAQuestionInTheForm extends DriverFactory {
+public class VerifiesThatUserCanSubmitAQuestionInTheForm extends BasePage {
     private final String titleOfHowToShareStories = "How to share your questions, stories, pictures and videos with BBC News - BBC News";
 
     @Test
@@ -20,7 +19,7 @@ public class VerifiesThatUserCanSubmitAQuestionInTheForm extends DriverFactory {
                 .clickOnSubmitButton()
                 .getTitle();
         assertThat(actualTitle).isEqualTo(titleOfHowToShareStories);
-        boolean errorMessages = new HowToShareYourStoriesPage(driver)
+        boolean errorMessages = new Form(driver)
                 .ifErrorsMessagesAreDisplayed();
         assertThat(errorMessages).isTrue();
     }
@@ -36,43 +35,41 @@ public class VerifiesThatUserCanSubmitAQuestionInTheForm extends DriverFactory {
                 .clickOnSubmitButton()
                 .getTitle();
         assertThat(actualTitle).isEqualTo(titleOfHowToShareStories);
-        boolean errorMessages = new HowToShareYourStoriesPage(driver)
+        boolean errorMessages = new Form(driver)
                 .ifErrorsMessagesAreDisplayed();
         assertThat(errorMessages).isTrue();
     }
 
     @Test
     public void verifiesThatUserCanNotSubmitWithAllReqCheckBoxesAndNonEmptyName() {
-        String INPUT_NAME = "Type some name";
         String actualTitle = new HomePage(driver)
                 .clickOnNews()
                 .clickOnTheCoronaVirusTab()
                 .clickOnGetStories()
                 .clickOnHowToShareYourStories()
-                .sendName(INPUT_NAME)
+                .fillForm(Form.FormFields.NAME)
                 .clickOnAllCheckBoxes()
                 .clickOnSubmitButton()
                 .getTitle();
         assertThat(actualTitle).isEqualTo(titleOfHowToShareStories);
-        boolean errorMessages = new HowToShareYourStoriesPage(driver)
+        boolean errorMessages = new Form(driver)
                 .ifErrorsMessagesAreDisplayed();
         assertThat(errorMessages).isTrue();
     }
 
     @Test
     public void verifiesThatUserCanNotSubmitWithAllReqCheckBoxesAndEmptyNameButNonEmptyStory() {
-        String INPUT_STORY = "* type some story... *";
         String actualTitle = new HomePage(driver)
                 .clickOnNews()
                 .clickOnTheCoronaVirusTab()
                 .clickOnGetStories()
                 .clickOnHowToShareYourStories()
-                .sendStory(INPUT_STORY)
+                .fillForm(Form.FormFields.STORY)
                 .clickOnAllCheckBoxes()
                 .clickOnSubmitButton()
                 .getTitle();
         assertThat(actualTitle).isEqualTo(titleOfHowToShareStories);
-        boolean errorMessages = new HowToShareYourStoriesPage(driver)
+        boolean errorMessages = new Form(driver)
                 .ifErrorsMessagesAreDisplayed();
         assertThat(errorMessages).isTrue();
     }

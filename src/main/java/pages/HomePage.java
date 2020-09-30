@@ -23,22 +23,6 @@ public class HomePage extends AbstractPage {
         super(driver);
     }
 
-    public WebElement getNews() {
-        return news;
-    }
-
-    public WebElement getSearchButton() {
-        return searchButton;
-    }
-
-    public WebElement getSport() {
-        return sport;
-    }
-
-    public WebElement getCloseButton() {
-        return closeButton;
-    }
-
     public void openURL() {
         String URL = "https://www.bbc.com/";
         driver.get(URL);
@@ -48,11 +32,6 @@ public class HomePage extends AbstractPage {
         sport.click();
         waitAndClosePopUp(closeButton);
         return new SportPage(driver);
-    }
-
-    public void clickOnNewsCucumber() {
-        getNews().click();
-        waitAndClosePopUp(getCloseButton());
     }
 
     public NewsPage clickOnNews() {
