@@ -21,8 +21,7 @@ public class CoronaVirusPage extends AbstractPage {
     }
 
     public CoronaVirusStoriesPage clickOnGetStories() {
-        new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.presenceOfElementLocated(yourCoronaVirusStr));
+        waitForPageLoadComplete(20);
         yourCoronaVirusStories.click();
         return new CoronaVirusStoriesPage(driver);
     }
