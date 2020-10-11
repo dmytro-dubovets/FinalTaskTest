@@ -25,6 +25,7 @@ public class NewsPage extends AbstractPage {
 
     public CoronaVirusPage clickOnTheCoronaVirusTab() {
         coronaVirusTab.click();
+        waitForPageLoadComplete(20);
         return new CoronaVirusPage(driver);
     }
 

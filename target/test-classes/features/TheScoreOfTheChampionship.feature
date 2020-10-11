@@ -3,6 +3,7 @@ Feature: As a user I want to check football score on the Team page
 
   @finalTask
   Scenario Outline: The team scores should be displayed correctly
+    Given User opens website
     When User clicks on Sport page
     Then User clicks on Football page
     And User clicks on scores and fixtures

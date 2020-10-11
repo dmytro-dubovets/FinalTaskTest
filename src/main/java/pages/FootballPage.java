@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class FootballPage extends AbstractPage {
 
@@ -14,7 +15,8 @@ public class FootballPage extends AbstractPage {
     }
 
     public ScoresAndFixturesPage clickOnScoresAndFixtures() {
-        scoresAndFixtures.click();
+        wait.until(ExpectedConditions.elementToBeClickable(scoresAndFixtures)).click();
+        waitForPageLoadComplete(20);
         return new ScoresAndFixturesPage(driver);
     }
 }

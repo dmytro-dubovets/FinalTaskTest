@@ -10,6 +10,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CheckSecondaryArticleTitles extends BasePage {
+
     private final List<String> listOfExpectedArticleTitles = new ArrayList<>(Arrays.asList(
             "Home", "US Election", "Coronavirus", "Video", "World",
             "UK", "Business", "Tech", "Science", "Stories", "Entertainment & Arts",

@@ -5,13 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import java.util.concurrent.TimeUnit;
-
 public class DriverSingleton {
 
     private static WebDriver driver;
 
-    private DriverSingleton() {
+    public DriverSingleton() {
     }
 
     public static WebDriver getDriver(Browser browser) {
@@ -27,7 +25,6 @@ public class DriverSingleton {
                     break;
             }
             driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         }
         return driver;
     }
@@ -36,7 +33,7 @@ public class DriverSingleton {
         return driver == null ? getDriver(Browser.CHROME) : driver;
     }
 
-    public static void tearDown() {
+    public static  void tearDown() {
         if (driver != null) {
             driver.quit();
             driver = null;

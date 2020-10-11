@@ -35,7 +35,7 @@ public class CoronaVirusStoriesPage extends AbstractPage {
                     break;
                 }
             }
-        } catch (Exception e) {
+        } catch (NullPointerException | IndexOutOfBoundsException e) {
             e.printStackTrace();
         }
         return howToShareYourStories.get(0);

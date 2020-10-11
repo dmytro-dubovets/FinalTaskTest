@@ -9,7 +9,7 @@ import java.util.List;
 
 public class SearchPage extends AbstractPage {
 
-    @FindBy(xpath = "//div[@class='css-l100ew-PromoContentSummary ett16tt10']/p/a")
+    @FindBy(css = "p > a > span")
     private List<WebElement> headlineOfSearchArticle;
 
     public SearchPage(WebDriver driver) {
@@ -18,7 +18,6 @@ public class SearchPage extends AbstractPage {
 
     public String getFirstListOfHeadlineOfSearchArticles() {
         List<String> actualListOfArticles = new ArrayList<>();
-
         for (WebElement article : headlineOfSearchArticle) {
             String headlineTextArticle = article.getText();
             try {
@@ -27,7 +26,7 @@ public class SearchPage extends AbstractPage {
                 } else {
                     actualListOfArticles.add(headlineTextArticle);
                 }
-            } catch (Exception e) {
+            } catch (NullPointerException | IndexOutOfBoundsException e) {
                 e.printStackTrace();
             }
         }

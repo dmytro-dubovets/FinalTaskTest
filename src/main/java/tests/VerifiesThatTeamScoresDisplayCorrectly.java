@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class VerifiesThatTeamScoresDisplayCorrectly extends BasePage {
 
 
-    @Test
+    @Test(priority = 1)
     public void checkThatTeamsScores() {
 
         String championshipTeam_1 = "Scottish Championship";
@@ -30,7 +30,7 @@ public class VerifiesThatTeamScoresDisplayCorrectly extends BasePage {
         assertThat(expectedScoreOnTheTeamPage).containsSequence(firstScoreTeam_1, secondScoreTeam_1);
     }
 
-    @Test
+    @Test(priority = 2)
     public void checkThatTeamsScoresSecondChampionShip() {
 
         String championshipTeam_2 = "National League";
@@ -50,7 +50,7 @@ public class VerifiesThatTeamScoresDisplayCorrectly extends BasePage {
         assertThat(expectedScoreOnTheTeamPage).containsSequence(firstScoreTeam_2, secondScoreTeam_2);
     }
 
-    @Test
+    @Test(priority = 3)
     public void checkThatTeamsScoresThirdChampionShip() {
 
         String championshipTeam_3 = "Europa League";
@@ -70,7 +70,7 @@ public class VerifiesThatTeamScoresDisplayCorrectly extends BasePage {
         assertThat(expectedScoreOnTheTeamPage).containsSequence(firstScoreTeam_3, secondScoreTeam_3);
     }
 
-    @Test
+    @Test(priority = 4)
     public void checkThatTeamsScoresFourthChampionShip() {
 
         String championshipTeam_4 = "Premier League";
@@ -90,7 +90,7 @@ public class VerifiesThatTeamScoresDisplayCorrectly extends BasePage {
         assertThat(expectedScoreOnTheTeamPage).containsSequence(firstScoreTeam_4, secondScoreTeam_4);
     }
 
-    @Test
+    @Test(priority = 5)
     public void checkThatTeamsScoresFifthChampionShip() {
 
         String championshipTeam_5 = "England Football Team";

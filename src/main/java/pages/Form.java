@@ -4,8 +4,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,16 +50,6 @@ public class Form extends AbstractPage {
         return inputName;
     }
 
-    public Form sendName(String name) {
-        getInputName().sendKeys(name + Keys.ENTER);
-        return this;
-    }
-
-    public Form sendStory(String story) {
-        getTextArea().sendKeys(story + Keys.ENTER);
-        return this;
-    }
-
     public Form sendNameOrStory(String story, String name) {
         getTextArea().sendKeys(story + Keys.ENTER);
         getInputName().sendKeys(name + Keys.ENTER);
@@ -72,6 +62,7 @@ public class Form extends AbstractPage {
 
     public Form clickOnSubmitButton() {
         submitButton.click();
+        wait.until(ExpectedConditions.visibilityOfAllElements(errorMessages));
         return this;
     }
 
@@ -83,15 +74,6 @@ public class Form extends AbstractPage {
             }
         }
         return result;
-    }
-
-    public String errorMessages() {
-        List<String> errorMsg = new ArrayList<>();
-        for (WebElement errorMessage : getErrorMessages()) {
-            String errors = errorMessage.getText();
-            errorMsg.add(errors);
-        }
-        return errorMsg.get(0);
     }
 
     public Form clickOnAllCheckBoxes() {

@@ -3,13 +3,15 @@ package tests;
 import driver.DriverSingleton;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 
 public abstract class BasePage {
 
     protected static WebDriver driver;
 
-    @BeforeClass
+    @BeforeTest
     public void profileSetUp() {
         driver = DriverSingleton.getDriver();
         driver.manage().window().maximize();
@@ -17,7 +19,7 @@ public abstract class BasePage {
         driver.get(URL);
     }
 
-    @AfterClass
+    @AfterTest
     public void closeBrowser() {
         DriverSingleton.tearDown();
     }

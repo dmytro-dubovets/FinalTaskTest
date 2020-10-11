@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static cucumber.hooks.DriverHooks.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static pages.FactoryOfPages.*;
-
+import static pages.FactoryOfVariables.*;
 
 public class StepsDefinition {
 
