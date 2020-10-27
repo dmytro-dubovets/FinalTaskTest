@@ -27,9 +27,6 @@ public class ScoresAndFixturesPage extends AbstractPage {
     @FindBy(xpath = "//li[@class='gs-o-list-ui__item gs-u-pb-']")
     private List<WebElement> listOfTwoTeams;
 
-/*    @FindBy(xpath = "//div[@class='gel-wrap']//div[@class='gel-layout gel-layout--center']")
-    private WebElement scoreContent;*/
-
     @FindBy(xpath = "//div[@id='orb-modules']//div[@class='gel-layout gel-layout--center']/div[@class='gel-layout__item gel-10/12@l']/div[@class='gs-u-clearfix']")
     private WebElement scoreContent;
 

@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class SearchPage extends AbstractPage {
 
@@ -17,19 +19,9 @@ public class SearchPage extends AbstractPage {
     }
 
     public String getFirstListOfHeadlineOfSearchArticles() {
-        List<String> actualListOfArticles = new ArrayList<>();
-        for (WebElement article : headlineOfSearchArticle) {
-            String headlineTextArticle = article.getText();
-            try {
-                if (headlineTextArticle == null) {
-                    break;
-                } else {
-                    actualListOfArticles.add(headlineTextArticle);
-                }
-            } catch (NullPointerException | IndexOutOfBoundsException e) {
-                e.printStackTrace();
-            }
-        }
-        return actualListOfArticles.get(0);
+        return headlineOfSearchArticle.stream().map(WebElement::getText)
+                .findFirst()
+                .orElse(null);
+
     }
 }

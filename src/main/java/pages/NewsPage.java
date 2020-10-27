@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class NewsPage extends AbstractPage {
@@ -36,16 +37,10 @@ public class NewsPage extends AbstractPage {
     public String getExpectedTextOfTheMainArticle() {
         return expectedArticle.getText();
     }
-
-
+    
     public List<String> stringArrayListOfActualSecondaryArticleTitles() {
-        List<String> actualList = new ArrayList<>();
-        for (WebElement tab : actualListOfSecondaryArticleTitles) {
-            String tabOfList = tab.getText();
-            if (tabOfList.length() != 0) {
-                actualList.add(tabOfList);
-            }
-        }
-        return actualList;
+        return actualListOfSecondaryArticleTitles.stream()
+                .map(WebElement::getText)
+                .collect(Collectors.toList());
     }
 }
